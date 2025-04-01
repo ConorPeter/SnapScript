@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -12,22 +12,44 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { signOut } from "firebase/auth";
-import { auth } from "../lib/firebaseConfig";
+import { auth, db } from "../lib/firebaseConfig";
 import { useRouter } from "expo-router";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function HomeScreen() {
   const router = useRouter();
+  const [firstName, setFirstName] = useState("");
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("✅ Logged out");
+      console.log("Logged out");
       router.replace("/landing");
     } catch (error) {
-      console.error("❌ Logout error:", error);
+      console.error("Logout error:", error);
       Alert.alert("Logout failed", error.message);
     }
   };
+
+  // 🔁 Get user name from Firestore
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            setFirstName(data.firstName || "");
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+
+    fetchUserName();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -46,7 +68,9 @@ export default function HomeScreen() {
             source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
-          <Text style={styles.headerTitle}>Welcome, [Name]!</Text>
+          <Text style={styles.headerTitle}>
+            Welcome{firstName ? `, ${firstName}` : ""}!
+          </Text>
         </View>
 
         <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
@@ -65,7 +89,10 @@ export default function HomeScreen() {
           </View>
           <Text style={styles.noMedsText}>No active Medications</Text>
           <Text style={styles.subText}>Would you like to set one up?</Text>
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => router.push("/add-medication")}
+          >
             <Text style={styles.addButtonText}>Add New Medication</Text>
           </TouchableOpacity>
         </View>
@@ -73,7 +100,10 @@ export default function HomeScreen() {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => router.push("/add-medication")}
+        >
           <Ionicons name="add-circle-outline" size={24} color="#8E8E93" />
           <Text style={styles.navText}>Add Med</Text>
         </TouchableOpacity>
@@ -81,7 +111,10 @@ export default function HomeScreen() {
           <Ionicons name="home-outline" size={24} color="#007AFF" />
           <Text style={[styles.navText, { color: "#007AFF" }]}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => router.push("/medication-search")}
+        >
           <Ionicons
             name="information-circle-outline"
             size={24}

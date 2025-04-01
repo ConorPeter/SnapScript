@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Ibuprofen",
+    "brand": "Advil",
+    "description": "Pain reliever and anti-inflammatory."
+  },
+  {
+    "name": "Paracetamol",
+    "brand": "Tylenol",
+    "description": "Used to treat fever and mild to moderate pain."
+  },
+  {
+    "name": "Amoxicillin",
+    "brand": "Moxatag",
+    "description": "Antibiotic used to treat infections."
+  }
+]

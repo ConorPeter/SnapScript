@@ -11,23 +11,11 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useRouter, useLocalSearchParams } from "expo-router";
 
 export default function MedicationDetailScreen() {
   const router = useRouter();
-
-  const medication = {
-    name: "Ibuprofen",
-    brandNames: ["Advil", "Motrin", "Nurofen", "Midol"],
-    description:
-      "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) used to reduce fever and treat pain or inflammation.",
-    dosage:
-      "200-400 mg every 4 to 6 hours as needed. Do not exceed 1200 mg per day without doctor supervision.",
-    sideEffects: ["Nausea", "Dizziness", "Stomach pain", "Heartburn"],
-    instructions: "Take with food or milk to avoid stomach upset.",
-    warnings:
-      "Avoid using with other NSAIDs. Long-term use may increase risk of heart attack or stroke.",
-  };
+  const { name, brand, description } = useLocalSearchParams();
 
   return (
     <View style={styles.container}>
@@ -49,31 +37,38 @@ export default function MedicationDetailScreen() {
             source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
-          <Text style={styles.title}>{medication.name}</Text>
+          <Text style={styles.title}>{name || "Medication"}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.content}>
-          <Text style={styles.heading}>Brand Names</Text>
-          <Text style={styles.bodyText}>
-            {medication.brandNames.join(", ")}
-          </Text>
+          <Text style={styles.heading}>Brand Name</Text>
+          <Text style={styles.bodyText}>{brand || "Not provided"}</Text>
 
           <Text style={styles.heading}>Description</Text>
-          <Text style={styles.bodyText}>{medication.description}</Text>
+          <Text style={styles.bodyText}>
+            {description || "No description available."}
+          </Text>
 
+          {/* Optional fallback placeholders if you expand */}
           <Text style={styles.heading}>Dosage</Text>
-          <Text style={styles.bodyText}>{medication.dosage}</Text>
+          <Text style={styles.bodyText}>
+            Check your prescription for details.
+          </Text>
 
           <Text style={styles.heading}>Side Effects May Include</Text>
           <Text style={styles.bodyText}>
-            {medication.sideEffects.join(", ")}
+            Nausea, dizziness, or other reactions may occur.
           </Text>
 
           <Text style={styles.heading}>Instructions</Text>
-          <Text style={styles.bodyText}>{medication.instructions}</Text>
+          <Text style={styles.bodyText}>
+            Follow the instructions from your healthcare provider.
+          </Text>
 
           <Text style={styles.heading}>Warnings</Text>
-          <Text style={styles.bodyText}>{medication.warnings}</Text>
+          <Text style={styles.bodyText}>
+            Use as directed. Contact a doctor if symptoms persist.
+          </Text>
         </ScrollView>
       </SafeAreaView>
     </View>

@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -31,7 +32,7 @@ export default function ManualEntryScreen() {
   const [reminderTime, setReminderTime] = useState(new Date());
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [hasShownTimePicker, setHasShownTimePicker] = useState(false);
-
+  const router = useRouter();
   const [isDosageFormModalVisible, setDosageFormModalVisible] = useState(false);
   const [isFrequencyModalVisible, setFrequencyModalVisible] = useState(false);
 
@@ -291,15 +292,26 @@ export default function ManualEntryScreen() {
 
         {/* Bottom Navigation */}
         <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="add-circle-outline" size={24} color="#8E8E93" />
-            <Text style={styles.navText}>Add Med</Text>
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push("/add-medication")}
+          >
+            <Ionicons name="add-circle-outline" size={24} color="#007AFF" />
+            <Text style={[styles.navText, { color: "#007AFF" }]}>Add Med</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
-            <Ionicons name="home-outline" size={24} color="#007AFF" />
-            <Text style={[styles.navText, { color: "#007AFF" }]}>Home</Text>
+
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push("/home")}
+          >
+            <Ionicons name="home-outline" size={24} color="#8E8E93" />
+            <Text style={styles.navText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
+
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push("/medication-search")}
+          >
             <Ionicons
               name="information-circle-outline"
               size={24}

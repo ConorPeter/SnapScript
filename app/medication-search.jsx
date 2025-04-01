@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,23 +9,39 @@ import {
   StatusBar,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import medications from "./data/medications.json";
 
 export default function MedSearch() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMeds, setFilteredMeds] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredMeds([]);
+      return;
+    }
+
+    const results = medications.filter(
+      (med) =>
+        med.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        med.brand.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredMeds(results);
+  }, [searchQuery]);
 
   return (
     <View style={styles.container}>
       {Platform.OS === "android" && (
-        <StatusBar
-          backgroundColor="#F5F5F5"
-          barStyle="dark-content"
-          translucent={false}
-        />
+        <StatusBar backgroundColor="#F5F5F5" barStyle="dark-content" />
       )}
       <SafeAreaView style={styles.contentContainer}>
-        {/* Header with Logo and Title */}
+        {/* Header */}
         <View style={styles.headerContainer}>
           <Image
             source={require("../assets/images/Logo.png")}
@@ -51,13 +67,44 @@ export default function MedSearch() {
           />
         </View>
 
-        {/* Bottom Navigation */}
+        {/* Results */}
+        <ScrollView style={{ marginBottom: 80 }}>
+          {filteredMeds.map((med, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.resultCard}
+              onPress={() =>
+                router.push({
+                  pathname: "/medication-info-display",
+                  params: {
+                    name: med.name,
+                    brand: med.brand,
+                    description: med.description,
+                  },
+                })
+              }
+            >
+              <Text style={styles.resultTitle}>
+                {med.name} <Text style={styles.brand}>({med.brand})</Text>
+              </Text>
+              <Text style={styles.resultDesc}>{med.description}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+
+        {/* Bottom Nav */}
         <View style={styles.bottomNav}>
-          <TouchableOpacity style={styles.navItem}>
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push("/add-medication")}
+          >
             <Ionicons name="add-circle-outline" size={24} color="#8E8E93" />
             <Text style={styles.navText}>Add Med</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navItem}>
+          <TouchableOpacity
+            style={styles.navItem}
+            onPress={() => router.push("/home")}
+          >
             <Ionicons name="home-outline" size={24} color="#8E8E93" />
             <Text style={styles.navText}>Home</Text>
           </TouchableOpacity>
@@ -112,7 +159,7 @@ const styles = StyleSheet.create({
     borderColor: "#E5E5EA",
     paddingHorizontal: 12,
     paddingVertical: 20,
-    marginBottom: 16,
+    marginBottom: 10,
   },
   searchIcon: {
     marginRight: 8,
@@ -121,6 +168,28 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 20,
     color: "#000",
+  },
+  resultCard: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#E5E5EA",
+  },
+  resultTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#000",
+  },
+  brand: {
+    fontWeight: "400",
+    color: "#555",
+  },
+  resultDesc: {
+    marginTop: 4,
+    fontSize: 14,
+    color: "#444",
   },
   bottomNav: {
     position: "absolute",
