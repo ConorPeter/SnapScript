@@ -8,13 +8,29 @@ import {
   Image,
   Platform,
   StatusBar,
+  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { signOut } from "firebase/auth";
+import { auth } from "../lib/firebaseConfig";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log("✅ Logged out");
+      router.replace("/landing");
+    } catch (error) {
+      console.error("❌ Logout error:", error);
+      Alert.alert("Logout failed", error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {/* Handle Status Bar on Android */}
       {Platform.OS === "android" && (
         <StatusBar
           backgroundColor="#FFFFFF"
@@ -32,8 +48,9 @@ export default function HomeScreen() {
           />
           <Text style={styles.headerTitle}>Welcome, [Name]!</Text>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.logoutText}>Log out</Text>
+
+        <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+          <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>
       </View>
 
@@ -41,7 +58,6 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.contentContainer}>
         <View style={styles.content}>
           <View style={styles.illustrationContainer}>
-            {/* Custom Image */}
             <Image
               source={require("../assets/images/Calender.png")}
               style={styles.customImage}
@@ -83,7 +99,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F5F5F5",
   },
-  // Header Styles
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -105,10 +120,16 @@ const styles = StyleSheet.create({
     color: "#000",
     marginTop: 35,
   },
+  logoutButton: {
+    marginTop: 20,
+    padding: 12,
+    backgroundColor: "red",
+    borderRadius: 8,
+  },
   logoutText: {
     fontSize: 18,
-    color: "#007AFF",
-    marginTop: 35,
+    color: "#fff",
+    fontWeight: "600",
   },
   contentContainer: {
     flex: 1,

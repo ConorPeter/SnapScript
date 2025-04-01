@@ -5,10 +5,51 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import { Link } from "expo-router";
+import { useState } from "react";
+import { useRouter } from "expo-router";
+import { auth, db } from "../lib/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export default function SignupScreen() {
+  const router = useRouter();
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = async () => {
+    if (!firstName || !email || !password) {
+      Alert.alert("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Save user to Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        firstName,
+        email,
+        createdAt: serverTimestamp(),
+      });
+
+      console.log("✅ User saved to Firestore");
+      Alert.alert("Success", "Account created!");
+
+      router.replace("/home");
+    } catch (error) {
+      console.error("❌ Sign up error:", error);
+      Alert.alert("Error", error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* Logo */}
@@ -21,12 +62,14 @@ export default function SignupScreen() {
       <Text style={styles.title}>Create Account</Text>
       <Text style={styles.subtitle}>Smart Scanning for Smarter Health!</Text>
 
-      {/* Email Input */}
+      {/* First Name Input */}
       <Text style={styles.label}>First Name</Text>
       <TextInput
         style={styles.input}
         placeholder="First Name"
         placeholderTextColor="#999"
+        value={firstName}
+        onChangeText={setFirstName}
       />
 
       {/* Email Input */}
@@ -35,6 +78,9 @@ export default function SignupScreen() {
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="#999"
+        autoCapitalize="none"
+        value={email}
+        onChangeText={setEmail}
       />
 
       {/* Password Input */}
@@ -44,17 +90,23 @@ export default function SignupScreen() {
         placeholder="Password"
         placeholderTextColor="#999"
         secureTextEntry
+        value={password}
+        onChangeText={setPassword}
       />
 
       {/* Create Account Button */}
-      <Link href="/signup" asChild>
-        <TouchableOpacity style={styles.createAccountButton}>
-          <Text style={styles.createAccountText}>Create Account</Text>
-        </TouchableOpacity>
-      </Link>
+      <TouchableOpacity
+        style={styles.createAccountButton}
+        onPress={handleSignUp}
+      >
+        <Text style={styles.createAccountText}>Create Account</Text>
+      </TouchableOpacity>
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.loginButton}>
+      {/* Login Redirect */}
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => router.push("/login")}
+      >
         <Text style={styles.loginButtonText}>Already have an account?</Text>
       </TouchableOpacity>
     </View>
@@ -72,7 +124,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 80,
     height: 80,
-
     resizeMode: "contain",
     marginBottom: 20,
   },

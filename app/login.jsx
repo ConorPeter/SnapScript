@@ -5,45 +5,73 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
+import { useState } from "react";
+import { useRouter } from "expo-router";
+import { auth } from "../lib/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "expo-router";
 
 export default function LoginScreen() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Please enter your email and password.");
+      return;
+    }
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("✅ Logged in:", userCredential.user);
+      Alert.alert("Success", "Logged in!");
+      router.replace("/home");
+    } catch (error) {
+      console.error("❌ Login error:", error);
+      Alert.alert("Login Failed", error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      {/* Logo */}
       <Image
         source={require("../assets/images/Logo.png")}
         style={styles.logo}
       />
-
-      {/* Title and Subtitle */}
       <Text style={styles.title}>Let's Sign You In</Text>
       <Text style={styles.subtitle}>Welcome Back!</Text>
 
-      {/* Email Input */}
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="#999"
+        autoCapitalize="none"
+        value={email}
+        onChangeText={setEmail}
       />
 
-      {/* Password Input */}
       <Text style={styles.label}>Password</Text>
       <TextInput
         style={styles.input}
         placeholder="Password"
         placeholderTextColor="#999"
         secureTextEntry
+        value={password}
+        onChangeText={setPassword}
       />
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 
-      {/* Create Account Link */}
       <Link href="/signup" asChild>
         <TouchableOpacity style={styles.createAccountButton}>
           <Text style={styles.createAccountText}>Create Account</Text>
