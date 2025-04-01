@@ -40,12 +40,12 @@ export default function SignupScreen() {
         createdAt: serverTimestamp(),
       });
 
-      console.log("✅ User saved to Firestore");
+      console.log("User saved to Firestore");
       Alert.alert("Success", "Account created!");
 
       router.replace("/home");
     } catch (error) {
-      console.error("❌ Sign up error:", error);
+      console.error("Sign up error:", error);
       Alert.alert("Error", error.message);
     }
   };
@@ -119,32 +119,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#F8F9FA",
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
     resizeMode: "contain",
-    marginBottom: 20,
+    marginBottom: 5,
   },
   title: {
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#333",
     marginBottom: 10,
+    fontFamily: "Nunito_700Bold",
   },
   subtitle: {
     fontSize: 20,
     color: "#999",
     marginBottom: 40,
+    fontFamily: "Nunito_700Bold",
   },
   label: {
     alignSelf: "flex-start",
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "500",
     color: "#333",
     marginBottom: 5,
     marginLeft: 10,
+    fontFamily: "Nunito_700Bold",
   },
   input: {
     width: "100%",
@@ -154,35 +157,38 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
-    fontSize: 16,
+    fontSize: 18,
     color: "#333",
+    fontFamily: "Nunito_700Bold",
   },
   loginButton: {
     marginTop: 20,
     padding: 15,
     borderWidth: 1,
-    borderColor: "#007AFF",
+    borderColor: "#3B8EE2",
     borderRadius: 8,
     alignItems: "center",
     width: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: "#F8F9FA",
   },
   loginButtonText: {
-    color: "#007AFF",
-    fontSize: 18,
+    color: "#3B8EE2",
+    fontSize: 20,
     fontWeight: "500",
+    fontFamily: "Nunito_700Bold",
   },
   createAccountButton: {
     width: "100%",
-    backgroundColor: "#007AFF",
+    backgroundColor: "#3B8EE2",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
   },
   createAccountText: {
-    color: "#fff",
-    fontSize: 18,
+    color: "#F8F9FA",
+    fontSize: 20,
     fontWeight: "600",
+    fontFamily: "Nunito_700Bold",
   },
 });

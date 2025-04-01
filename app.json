@@ -1,51 +1,36 @@
 {
   "expo": {
     "name": "SnapScript",
-
     "slug": "SnapScript",
-
     "version": "1.0.0",
-
     "orientation": "portrait",
-
     "icon": "./assets/images/Full-Logo.png",
-
     "scheme": "myapp",
-
     "userInterfaceStyle": "automatic",
-
     "newArchEnabled": true,
-
     "ios": {
       "supportsTablet": true
     },
-
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/Full-Logo.png",
-
         "backgroundColor": "#ffffff"
       }
     },
-
     "web": {
       "bundler": "metro",
-
       "output": "static",
-
       "favicon": "./assets/images/Full-Logo.png"
     },
-
     "splash": {
       "image": "./assets/images/Full-Logo.png",
-
       "resizeMode": "contain",
-
       "backgroundColor": "#3B8EE2"
     },
-
-    "plugins": ["expo-router"],
-
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
     "experiments": {
       "typedRoutes": true
     }

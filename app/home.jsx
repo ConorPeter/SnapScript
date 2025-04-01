@@ -68,8 +68,12 @@ export default function HomeScreen() {
             source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
-          <Text style={styles.headerTitle}>
-            Welcome{firstName ? `, ${firstName}` : ""}!
+          <Text
+            style={styles.headerTitle}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
+            Welcome{firstName ? `, ${firstName}` : ""}
           </Text>
         </View>
 
@@ -104,11 +108,11 @@ export default function HomeScreen() {
           style={styles.navItem}
           onPress={() => router.push("/add-medication")}
         >
-          <Ionicons name="add-circle-outline" size={24} color="#8E8E93" />
+          <Ionicons name="add-circle-outline" size={26} color="#8E8E93" />
           <Text style={styles.navText}>Add Med</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="home-outline" size={24} color="#007AFF" />
+          <Ionicons name="home-outline" size={26} color="#007AFF" />
           <Text style={[styles.navText, { color: "#007AFF" }]}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -117,7 +121,7 @@ export default function HomeScreen() {
         >
           <Ionicons
             name="information-circle-outline"
-            size={24}
+            size={26}
             color="#8E8E93"
           />
           <Text style={styles.navText}>Med Info</Text>
@@ -137,7 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 10,
     backgroundColor: "#FFFFFF",
     borderBottomWidth: 1,
     borderBottomColor: "#E5E5EA",
@@ -145,24 +149,29 @@ const styles = StyleSheet.create({
   headerLeft: {
     flexDirection: "row",
     alignItems: "center",
+    flex: 1,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "600",
-    marginLeft: 8,
     color: "#000",
-    marginTop: 35,
+    marginTop: 40,
+    marginLeft: 2,
+    fontFamily: "Nunito_700Bold",
+    flexShrink: 1,
   },
+
   logoutButton: {
-    marginTop: 20,
-    padding: 12,
-    backgroundColor: "red",
+    marginTop: 40,
+    marginLeft: 20,
+    padding: 8,
+    backgroundColor: "#3B8EE2",
     borderRadius: 8,
   },
   logoutText: {
     fontSize: 18,
-    color: "#fff",
-    fontWeight: "600",
+    color: "#F8F9FA",
+    fontFamily: "Nunito_700Bold",
   },
   contentContainer: {
     flex: 1,
@@ -189,28 +198,30 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#000",
     marginBottom: 8,
+    fontFamily: "Nunito_700Bold",
   },
   subText: {
-    fontSize: 18,
+    fontSize: 20,
     color: "#8E8E93",
     marginBottom: 24,
+    fontFamily: "Nunito_700Bold",
   },
   addButton: {
     backgroundColor: "#007AFF",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
-    marginTop: 10,
   },
   addButtonText: {
     fontSize: 20,
     fontWeight: "600",
     color: "#FFFFFF",
+    fontFamily: "Nunito_700Bold",
   },
   bottomNav: {
     flexDirection: "row",
     justifyContent: "space-around",
-    paddingVertical: 12,
+    paddingVertical: 10,
     backgroundColor: "#FFFFFF",
     borderTopWidth: 1,
     borderTopColor: "#E5E5EA",
@@ -221,13 +232,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   navText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#8E8E93",
     marginTop: 4,
+    fontFamily: "Nunito_700Bold",
   },
   logo: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     resizeMode: "contain",
     marginTop: 35,
   },

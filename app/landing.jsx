@@ -64,7 +64,7 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "light-blue",
+    backgroundColor: "#3B8EE2",
   },
   container: {
     flex: 1,
@@ -104,33 +104,35 @@ const styles = StyleSheet.create({
   appName: {
     fontSize: 38,
     fontWeight: "bold",
-    color: "#000", // changed from white
+    color: "#F8F9FA",
     textAlign: "center",
+    fontFamily: "Nunito_700Bold",
   },
   tagline: {
     fontSize: 18,
-    color: "#333", // changed from white
+    color: "#F8F9FA",
     marginBottom: 80,
     textAlign: "center",
+    fontFamily: "Nunito_700Bold",
   },
   button: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F8F9FA",
     paddingVertical: 15,
     paddingHorizontal: 90,
     borderRadius: 8,
     marginBottom: 50,
-    borderWidth: 1,
-    borderColor: "#007AFF",
   },
   buttonText: {
     fontSize: 20,
     fontWeight: "600",
-    color: "#007AFF",
+    color: "#3B8EE2",
+    fontFamily: "Nunito_700Bold",
   },
   terms: {
-    fontSize: 12,
-    color: "#666",
+    fontSize: 14,
+    color: "#F8F9FA",
     textAlign: "center",
     opacity: 0.8,
+    fontFamily: "Nunito_700Bold",
   },
 });

@@ -59,8 +59,12 @@ SnapScript is an Expo router React Native medication reminder app designed to si
 
 - npm install
 
-**3. Start Expo server**
+**3. Insert API keys**
+
+- Add firebase config, Openai API, and firestore API keys
+
+**4. Start Expo server**
 
 - npx expo start
 
-**4. Run on device using Expo Go**
+**5. Run on device using Expo Go**

@@ -10,7 +10,7 @@ export default function AuthCheck() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("👀 Auth state changed. User is:", user);
+      console.log("Auth state changed. User is:", user);
       setUser(user);
       setLoading(false);
     });
