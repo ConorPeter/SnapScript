@@ -12,10 +12,12 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
+import colors from "../lib/colors";
 
 export default function MedicationDetailScreen() {
   const router = useRouter();
-  const { name, brand, description } = useLocalSearchParams();
+  const { name, brand, description, dosage, sideEffects, importantInfo } =
+    useLocalSearchParams();
 
   return (
     <View style={styles.container}>
@@ -23,15 +25,15 @@ export default function MedicationDetailScreen() {
         <StatusBar backgroundColor="#F5F5F5" barStyle="dark-content" />
       )}
       <SafeAreaView style={styles.safeArea}>
-        {/* Back Arrow */}
+        {/* Back Button */}
         <TouchableOpacity
           onPress={() => router.back()}
           style={styles.backButton}
         >
-          <Ionicons name="arrow-back" size={38} color="#007AFF" />
+          <Ionicons name="arrow-back" size={44} color="#333" />
         </TouchableOpacity>
 
-        {/* Header: Logo + Medication Name */}
+        {/* Header */}
         <View style={styles.headerContainer}>
           <Image
             source={require("../assets/images/Logo.png")}
@@ -40,35 +42,42 @@ export default function MedicationDetailScreen() {
           <Text style={styles.title}>{name || "Medication"}</Text>
         </View>
 
+        {/* Content */}
         <ScrollView contentContainerStyle={styles.content}>
-          <Text style={styles.heading}>Brand Name</Text>
-          <Text style={styles.bodyText}>{brand || "Not provided"}</Text>
+          {brand && (
+            <>
+              <Text style={styles.heading}>Brand Names</Text>
+              <Text style={styles.bodyText}>{brand}</Text>
+            </>
+          )}
 
-          <Text style={styles.heading}>Description</Text>
-          <Text style={styles.bodyText}>
-            {description || "No description available."}
-          </Text>
+          {description && (
+            <>
+              <Text style={styles.heading}>Description</Text>
+              <Text style={styles.bodyText}>{description}</Text>
+            </>
+          )}
 
-          {/* Optional fallback placeholders if you expand */}
-          <Text style={styles.heading}>Dosage</Text>
-          <Text style={styles.bodyText}>
-            Check your prescription for details.
-          </Text>
+          {dosage && (
+            <>
+              <Text style={styles.heading}>Dosage</Text>
+              <Text style={styles.bodyText}>{dosage}</Text>
+            </>
+          )}
 
-          <Text style={styles.heading}>Side Effects May Include</Text>
-          <Text style={styles.bodyText}>
-            Nausea, dizziness, or other reactions may occur.
-          </Text>
+          {sideEffects && (
+            <>
+              <Text style={styles.heading}>Potential Side Effects</Text>
+              <Text style={styles.bodyText}>{sideEffects}</Text>
+            </>
+          )}
 
-          <Text style={styles.heading}>Instructions</Text>
-          <Text style={styles.bodyText}>
-            Follow the instructions from your healthcare provider.
-          </Text>
-
-          <Text style={styles.heading}>Warnings</Text>
-          <Text style={styles.bodyText}>
-            Use as directed. Contact a doctor if symptoms persist.
-          </Text>
+          {importantInfo && (
+            <>
+              <Text style={styles.heading}>Important Info</Text>
+              <Text style={styles.bodyText}>{importantInfo}</Text>
+            </>
+          )}
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -87,35 +96,41 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     marginTop: 5,
-    marginBottom: 20,
+    paddingHorizontal: 10,
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     resizeMode: "contain",
-    marginRight: 10,
+    marginRight: 5,
+    marginLeft: 60,
   },
   title: {
     fontSize: 28,
-    fontWeight: "700",
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   content: {
     paddingBottom: 100,
     paddingHorizontal: 16,
   },
   heading: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 22,
     color: "#000",
-    marginTop: 20,
+    marginTop: 30,
     marginBottom: 6,
+    fontFamily: "Nunito_700Bold",
+    borderBottomWidth: 1,
+    borderBottomColor: "#E5E5EA",
+    paddingBottom: 4,
   },
   bodyText: {
-    fontSize: 16,
-    color: "#333",
+    fontSize: 18,
+    color: "#4A4A4A",
     lineHeight: 24,
+    marginBottom: 8,
+    fontFamily: "Nunito_700Bold",
   },
 });

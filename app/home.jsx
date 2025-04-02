@@ -31,7 +31,6 @@ export default function HomeScreen() {
     }
   };
 
-  // 🔁 Get user name from Firestore
   useEffect(() => {
     const fetchUserName = async () => {
       try {
@@ -112,8 +111,8 @@ export default function HomeScreen() {
           <Text style={styles.navText}>Add Med</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="home-outline" size={26} color="#007AFF" />
-          <Text style={[styles.navText, { color: "#007AFF" }]}>Home</Text>
+          <Ionicons name="home-outline" size={26} color="#3B8EE2" />
+          <Text style={[styles.navText, { color: "#3B8EE2" }]}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
@@ -134,7 +133,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F8F9FA",
   },
   header: {
     flexDirection: "row",
@@ -160,7 +159,6 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_700Bold",
     flexShrink: 1,
   },
-
   logoutButton: {
     marginTop: 40,
     marginLeft: 20,
@@ -207,7 +205,7 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_700Bold",
   },
   addButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#3B8EE2",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,

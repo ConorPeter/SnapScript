@@ -17,6 +17,7 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import colors from "../lib/colors";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -88,12 +89,18 @@ export default function ManualEntryScreen() {
       )}
 
       <SafeAreaView style={styles.contentContainer}>
+        {/* Header with Logo and Title */}
+        <View style={styles.header}>
+          <Image
+            source={require("../assets/images/Logo.png")} // Update the path if necessary
+            style={styles.logo}
+          />
+          <Text style={styles.headerTitle}>Add Medication</Text>
+        </View>
+
         {/* Scrollable content */}
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.content}>
-            {/* Form Title, Graphic, Inputs, etc. */}
-            <Text style={styles.title}>Add Medication</Text>
-
             {/* Graphic */}
             <View style={styles.graphicContainer}>
               <Image
@@ -296,15 +303,15 @@ export default function ManualEntryScreen() {
             style={styles.navItem}
             onPress={() => router.push("/add-medication")}
           >
-            <Ionicons name="add-circle-outline" size={24} color="#007AFF" />
-            <Text style={[styles.navText, { color: "#007AFF" }]}>Add Med</Text>
+            <Ionicons name="add-circle-outline" size={26} color="#3B8EE2" />
+            <Text style={[styles.navText, { color: "#3B8EE2" }]}>Add Med</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.navItem}
             onPress={() => router.push("/home")}
           >
-            <Ionicons name="home-outline" size={24} color="#8E8E93" />
+            <Ionicons name="home-outline" size={26} color="#8E8E93" />
             <Text style={styles.navText}>Home</Text>
           </TouchableOpacity>
 
@@ -314,7 +321,7 @@ export default function ManualEntryScreen() {
           >
             <Ionicons
               name="information-circle-outline"
-              size={24}
+              size={26}
               color="#8E8E93"
             />
             <Text style={styles.navText}>Med Info</Text>
@@ -328,11 +335,11 @@ export default function ManualEntryScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F8F9FA",
   },
   contentContainer: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#F8F9FA",
   },
   scrollContent: {
     flexGrow: 1,
@@ -340,14 +347,6 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: "#000",
-    marginBottom: 5,
-    marginTop: 5,
-    textAlign: "center",
   },
   graphicContainer: {
     marginBottom: 20,
@@ -361,10 +360,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   label: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "600",
     color: "#000",
-    marginBottom: 8,
+    marginBottom: 5,
+    fontFamily: "Nunito_700Bold",
   },
   input: {
     backgroundColor: "#FFFFFF",
@@ -372,11 +372,11 @@ const styles = StyleSheet.create({
     borderColor: "#E5E5EA",
     borderRadius: 8,
     padding: 12,
-    fontSize: 16,
+    fontSize: 18,
     color: "#000",
     marginBottom: 25,
+    fontFamily: "Nunito_700Bold",
   },
-
   dropdown: {
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
@@ -386,11 +386,13 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   dropdownText: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   placeholderText: {
     color: "#8E8E93",
+    fontFamily: "Nunito_700Bold",
   },
   modalOverlay: {
     flex: 1,
@@ -413,6 +415,7 @@ const styles = StyleSheet.create({
   modalItemText: {
     fontSize: 16,
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   switchContainerRefill: {
     flexDirection: "row",
@@ -424,12 +427,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // marginBottom: 25,
   },
   scanButton: {
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#007AFF",
+    backgroundColor: colors.Blue,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 8,
@@ -437,12 +437,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   scanButtonText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "600",
-    color: "#007AFF",
+    color: colors.OffWhite,
+    fontFamily: "Nunito_700Bold",
   },
   submitButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: colors.Blue,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 8,
@@ -451,9 +452,9 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   submitButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#FFFFFF",
+    fontSize: 20,
+    color: colors.OffWhite,
+    fontFamily: "Nunito_700Bold",
   },
   bottomNav: {
     position: "absolute",
@@ -472,8 +473,28 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   navText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#8E8E93",
     marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    backgroundColor: colors.white,
+    marginBottom: 5,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    marginRight: 18,
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
 });

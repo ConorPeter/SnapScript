@@ -14,6 +14,8 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import medications from "./data/medications.json";
+import colors from "../lib/colors";
+import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
 export default function MedSearch() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,25 +49,29 @@ export default function MedSearch() {
             source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
-          <Text style={styles.headerText}>Medication Information</Text>
+          <Text style={styles.headerText}>Medication Info</Text>
         </View>
 
         {/* Search Bar */}
-        <View style={styles.searchContainer}>
-          <Ionicons
-            name="search"
-            size={20}
-            color="#8E8E93"
-            style={styles.searchIcon}
-          />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search medications..."
-            placeholderTextColor="#8E8E93"
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.searchWrapper}>
+            <View style={styles.searchContainer}>
+              <Ionicons
+                name="search"
+                size={20}
+                color="#8E8E93"
+                style={styles.searchIcon}
+              />
+              <TextInput
+                style={styles.searchInput}
+                placeholder="Search medications..."
+                placeholderTextColor="#8E8E93"
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+              />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
 
         {/* Results */}
         <ScrollView style={{ marginBottom: 80 }}>
@@ -80,6 +86,9 @@ export default function MedSearch() {
                     name: med.name,
                     brand: med.brand,
                     description: med.description,
+                    dosage: med.dosage,
+                    sideEffects: med.sideEffects,
+                    importantInfo: med.importantInfo,
                   },
                 })
               }
@@ -98,23 +107,23 @@ export default function MedSearch() {
             style={styles.navItem}
             onPress={() => router.push("/add-medication")}
           >
-            <Ionicons name="add-circle-outline" size={24} color="#8E8E93" />
+            <Ionicons name="add-circle-outline" size={26} color="#8E8E93" />
             <Text style={styles.navText}>Add Med</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.navItem}
             onPress={() => router.push("/home")}
           >
-            <Ionicons name="home-outline" size={24} color="#8E8E93" />
+            <Ionicons name="home-outline" size={26} color="#8E8E93" />
             <Text style={styles.navText}>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navItem}>
             <Ionicons
               name="information-circle-outline"
-              size={24}
-              color="#007AFF"
+              size={26}
+              color="#3B8EE2"
             />
-            <Text style={[styles.navText, { color: "#007AFF" }]}>Med Info</Text>
+            <Text style={[styles.navText, { color: "#3B8EE2" }]}>Med Info</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -136,19 +145,20 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   logo: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     resizeMode: "contain",
     marginRight: 20,
     marginLeft: 15,
   },
   headerText: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: "600",
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   searchContainer: {
     flexDirection: "row",
@@ -159,7 +169,6 @@ const styles = StyleSheet.create({
     borderColor: "#E5E5EA",
     paddingHorizontal: 12,
     paddingVertical: 20,
-    marginBottom: 10,
   },
   searchIcon: {
     marginRight: 8,
@@ -168,19 +177,21 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 20,
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   resultCard: {
     backgroundColor: "#fff",
     borderRadius: 8,
     padding: 16,
-    marginBottom: 12,
+    marginBottom: 6,
     borderWidth: 1,
     borderColor: "#E5E5EA",
   },
   resultTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "600",
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   brand: {
     fontWeight: "400",
@@ -208,8 +219,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   navText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#8E8E93",
     marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+  searchWrapper: {
+    marginBottom: 12,
+    paddingVertical: 6,
   },
 });
