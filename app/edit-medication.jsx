@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -13,8 +13,13 @@ import {
   Modal,
   FlatList,
   Image,
+  Alert,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { auth, db } from "../lib/firebaseConfig";
+import colors from "../lib/colors";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -43,6 +48,7 @@ export default function ManualEntryScreen() {
     "Cream",
     "Other",
   ];
+
   const frequencyOptions = [
     "Daily",
     "Every 12 hours",
@@ -50,6 +56,66 @@ export default function ManualEntryScreen() {
     "Weekly",
     "As Needed",
   ];
+
+  const { id } = useLocalSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchMedication = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user && id) {
+          const medDoc = await getDoc(
+            doc(db, "users", user.uid, "medications", id)
+          );
+          if (medDoc.exists()) {
+            const data = medDoc.data();
+            setMedicationName(data.name);
+            setDosageAmount(data.dosageAmount);
+            setDosageForm(data.dosageForm);
+            setInstructions(data.instructions);
+            setFrequency(data.frequency);
+            setDailyReminder(data.dailyReminder);
+            setRefillReminder(data.refillReminder);
+            setRefillDate(data.refillDate?.toDate?.() || new Date());
+            setReminderTime(data.reminderTime?.toDate?.() || new Date());
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load medication", err);
+      }
+    };
+
+    fetchMedication();
+  }, [id]);
+
+  const handleUpdate = async () => {
+    try {
+      const user = auth.currentUser;
+      if (!user || !id) return;
+
+      const updatedData = {
+        ...(medicationName && { name: medicationName }),
+        ...(dosageAmount && { dosageAmount }),
+        ...(dosageForm && { dosageForm }),
+        ...(instructions && { instructions }),
+        ...(frequency && { frequency }),
+        ...(dailyReminder !== undefined && { dailyReminder }),
+        ...(refillReminder !== undefined && { refillReminder }),
+        ...(refillDate && { refillDate }),
+        ...(reminderTime && { reminderTime }),
+      };
+
+      const medRef = doc(db, "users", user.uid, "medications", id);
+      await updateDoc(medRef, updatedData);
+
+      Alert.alert("Success", "Medication updated.");
+      router.push("/home");
+    } catch (err) {
+      console.error("Error updating medication:", err);
+      Alert.alert("Error", "Something went wrong.");
+    }
+  };
 
   const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || refillDate;
@@ -77,7 +143,6 @@ export default function ManualEntryScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Handle Status Bar on Android */}
       {Platform.OS === "android" && (
         <StatusBar
           backgroundColor="#F5F5F5"
@@ -89,10 +154,14 @@ export default function ManualEntryScreen() {
       <SafeAreaView style={styles.contentContainer}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.content}>
-            {/* Form Title */}
-            <Text style={styles.title}>Edit Medication</Text>
+            <View style={styles.headerContainer}>
+              <Image
+                source={require("../assets/images/Logo.png")}
+                style={styles.logo}
+              />
+              <Text style={styles.headerText}>Edit Medication</Text>
+            </View>
 
-            {/* Graphic */}
             <View style={styles.graphicContainer}>
               <Image
                 source={require("../assets/images/MedicalGraphic.jpg")}
@@ -100,7 +169,6 @@ export default function ManualEntryScreen() {
               />
             </View>
 
-            {/* Medication Name */}
             <Text style={styles.label}>Medication Name</Text>
             <TextInput
               style={styles.input}
@@ -110,7 +178,6 @@ export default function ManualEntryScreen() {
               placeholderTextColor="#8E8E93"
             />
 
-            {/* Dosage Amount */}
             <Text style={styles.label}>Dosage Amount</Text>
             <TextInput
               style={styles.input}
@@ -120,7 +187,6 @@ export default function ManualEntryScreen() {
               placeholderTextColor="#8E8E93"
             />
 
-            {/* Dosage Form */}
             <Text style={styles.label}>Dosage Form</Text>
             <TouchableOpacity
               style={styles.dropdown}
@@ -136,7 +202,6 @@ export default function ManualEntryScreen() {
               </Text>
             </TouchableOpacity>
 
-            {/* Dosage Form Modal */}
             <Modal
               visible={isDosageFormModalVisible}
               transparent={true}
@@ -167,7 +232,6 @@ export default function ManualEntryScreen() {
               </TouchableOpacity>
             </Modal>
 
-            {/* Frequency Selector */}
             <Text style={styles.label}>Frequency</Text>
             <TouchableOpacity
               style={styles.dropdown}
@@ -183,7 +247,6 @@ export default function ManualEntryScreen() {
               </Text>
             </TouchableOpacity>
 
-            {/* Frequency Modal */}
             <Modal
               visible={isFrequencyModalVisible}
               transparent={true}
@@ -214,7 +277,6 @@ export default function ManualEntryScreen() {
               </TouchableOpacity>
             </Modal>
 
-            {/* Instructions */}
             <Text style={styles.label}>Instructions</Text>
             <TextInput
               style={[styles.input, { height: 80 }]}
@@ -225,7 +287,6 @@ export default function ManualEntryScreen() {
               multiline
             />
 
-            {/* Daily Reminder */}
             <View style={styles.switchContainerDaily}>
               <Text style={styles.label}>Daily Reminder?</Text>
               <Switch
@@ -244,7 +305,6 @@ export default function ManualEntryScreen() {
               />
             </View>
 
-            {/* Daily Reminder Time Picker */}
             {dailyReminder && showTimePicker && (
               <DateTimePicker
                 value={reminderTime}
@@ -254,7 +314,6 @@ export default function ManualEntryScreen() {
               />
             )}
 
-            {/* Refill Reminder */}
             <View style={styles.switchContainerRefill}>
               <Text style={styles.label}>Refill Reminder?</Text>
               <Switch
@@ -265,7 +324,6 @@ export default function ManualEntryScreen() {
               />
             </View>
 
-            {/* Refill Reminder Date Picker (Conditional) */}
             {refillReminder && showDatePicker && (
               <DateTimePicker
                 value={refillDate}
@@ -276,9 +334,11 @@ export default function ManualEntryScreen() {
               />
             )}
 
-            {/* Submit Button */}
-            <TouchableOpacity style={styles.submitButton}>
-              <Text style={styles.submitButtonText}>Add Medication</Text>
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={handleUpdate}
+            >
+              <Text style={styles.submitButtonText}>Update Medication</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -290,18 +350,7 @@ export default function ManualEntryScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
-  },
-  contentContainer: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-  },
-  scrollContent: {
-    flexGrow: 1,
-    justifyContent: "center",
-  },
-  content: {
-    paddingHorizontal: 16,
+    backgroundColor: "#F8F9FA",
   },
   title: {
     fontSize: 28,
@@ -310,6 +359,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 5,
     textAlign: "center",
+  },
+  contentContainer: {
+    flex: 1,
+    backgroundColor: "#F8F9FA",
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
+  },
+  content: {
+    paddingHorizontal: 16,
   },
   graphicContainer: {
     marginBottom: 20,
@@ -323,10 +383,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   label: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "600",
     color: "#000",
-    marginBottom: 8,
+    marginBottom: 5,
+    fontFamily: "Nunito_700Bold",
   },
   input: {
     backgroundColor: "#FFFFFF",
@@ -334,11 +395,11 @@ const styles = StyleSheet.create({
     borderColor: "#E5E5EA",
     borderRadius: 8,
     padding: 12,
-    fontSize: 16,
+    fontSize: 18,
     color: "#000",
     marginBottom: 25,
+    fontFamily: "Nunito_700Bold",
   },
-
   dropdown: {
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
@@ -348,11 +409,13 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   dropdownText: {
-    fontSize: 16,
+    fontSize: 18,
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   placeholderText: {
     color: "#8E8E93",
+    fontFamily: "Nunito_700Bold",
   },
   modalOverlay: {
     flex: 1,
@@ -375,6 +438,7 @@ const styles = StyleSheet.create({
   modalItemText: {
     fontSize: 16,
     color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
   switchContainerRefill: {
     flexDirection: "row",
@@ -386,20 +450,93 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // marginBottom: 25,
   },
-
+  scanButton: {
+    backgroundColor: colors.Blue,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  scanButtonText: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: colors.OffWhite,
+    fontFamily: "Nunito_700Bold",
+  },
   submitButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: colors.Blue,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 8,
     marginVertical: 30,
     alignItems: "center",
+    marginBottom: 70,
   },
   submitButtonText: {
+    fontSize: 20,
+    color: colors.OffWhite,
+    fontFamily: "Nunito_700Bold",
+  },
+  bottomNav: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingVertical: 12,
+    backgroundColor: "#FFFFFF",
+    borderTopWidth: 1,
+    borderTopColor: "#E5E5EA",
+  },
+  navItem: {
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  navText: {
     fontSize: 16,
+    color: "#8E8E93",
+    marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    backgroundColor: colors.white,
+    marginBottom: 5,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    marginRight: 18,
+  },
+  headerTitle: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#000",
+    fontFamily: "Nunito_700Bold",
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 5,
+    paddingHorizontal: 16,
+    paddingTop: 10,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    marginRight: 20,
+  },
+  headerText: {
+    fontSize: 28,
     fontWeight: "600",
-    color: "#FFFFFF",
+    color: "#000",
+    fontFamily: "Nunito_700Bold",
   },
 });

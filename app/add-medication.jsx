@@ -18,6 +18,9 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import colors from "../lib/colors";
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from "../lib/firebaseConfig";
+import { Alert } from "react-native";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -78,6 +81,44 @@ export default function ManualEntryScreen() {
     }
   };
 
+  const handleAddMedication = async () => {
+    const user = auth.currentUser;
+    if (!user) {
+      Alert.alert("Not logged in", "Please log in to save medications.");
+      return;
+    }
+
+    if (!medicationName || !dosageAmount || !dosageForm) {
+      Alert.alert("Missing fields", "Please complete all required fields.");
+      return;
+    }
+
+    const medicationData = {
+      name: medicationName,
+      dosage: dosageAmount,
+      dosageForm,
+      instructions,
+      frequency,
+      dailyReminder,
+      reminderTime: dailyReminder ? reminderTime.toISOString() : null,
+      refillReminder,
+      refillDate: refillReminder ? refillDate.toISOString() : null,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      await addDoc(
+        collection(db, "users", user.uid, "medications"),
+        medicationData
+      );
+      Alert.alert("Success", "Medication added!");
+      router.replace("/home");
+    } catch (error) {
+      console.error("Error saving medication:", error);
+      Alert.alert("Error", "Failed to save medication. Try again.");
+    }
+  };
+
   return (
     <View style={styles.container}>
       {Platform.OS === "android" && (
@@ -92,7 +133,7 @@ export default function ManualEntryScreen() {
         {/* Header with Logo and Title */}
         <View style={styles.header}>
           <Image
-            source={require("../assets/images/Logo.png")} // Update the path if necessary
+            source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
           <Text style={styles.headerTitle}>Add Medication</Text>
@@ -291,7 +332,10 @@ export default function ManualEntryScreen() {
             )}
 
             {/* Submit Button */}
-            <TouchableOpacity style={styles.submitButton}>
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={handleAddMedication}
+            >
               <Text style={styles.submitButtonText}>Add Medication</Text>
             </TouchableOpacity>
           </View>

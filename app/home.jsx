@@ -9,46 +9,131 @@ import {
   Platform,
   StatusBar,
   Alert,
+  FlatList,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../lib/firebaseConfig";
 import { useRouter } from "expo-router";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  deleteDoc,
+} from "firebase/firestore";
 
 export default function HomeScreen() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
+  const [medications, setMedications] = useState([]);
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("Logged out");
       router.replace("/landing");
     } catch (error) {
-      console.error("Logout error:", error);
       Alert.alert("Logout failed", error.message);
     }
   };
 
+  const handleDelete = async (id) => {
+    Alert.alert(
+      "Delete Medication",
+      "Are you sure you want to delete this medication?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              const user = auth.currentUser;
+              if (!user) return;
+
+              await deleteDoc(doc(db, "users", user.uid, "medications", id));
+              setMedications((prev) => prev.filter((med) => med.id !== id));
+              Alert.alert("Success", "Medication deleted.");
+            } catch (error) {
+              console.error("Error deleting medication:", error);
+              Alert.alert("Error", "Failed to delete medication. Try again.");
+            }
+          },
+        },
+      ]
+    );
+  };
+
   useEffect(() => {
-    const fetchUserName = async () => {
+    const fetchUserData = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
       try {
-        const user = auth.currentUser;
-        if (user) {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
-          if (userDoc.exists()) {
-            const data = userDoc.data();
-            setFirstName(data.firstName || "");
-          }
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          setFirstName(data.firstName || "");
         }
+
+        const medsQuery = query(
+          collection(db, "users", user.uid, "medications"),
+          orderBy("createdAt", "desc")
+        );
+        const medsSnapshot = await getDocs(medsQuery);
+        const medsData = medsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setMedications(medsData);
       } catch (error) {
-        console.error("Failed to fetch user data:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchUserName();
+    fetchUserData();
   }, []);
+
+  const renderMedItem = ({ item }) => (
+    <View style={styles.medCard}>
+      <View style={styles.cardContent}>
+        {/* Left Side - Medication Info */}
+        <View style={styles.cardText}>
+          <Text style={styles.medName}>{item.name}</Text>
+          <Text style={styles.medDetail}>
+            {item.dosageAmount} {item.dosageForm} • {item.frequency}
+          </Text>
+        </View>
+
+        {/* Right Side - Buttons */}
+        <View style={styles.cardButtons}>
+          <TouchableOpacity
+            style={styles.editBtn}
+            onPress={() =>
+              router.push({
+                pathname: "/edit-medication",
+                params: { id: item.id },
+              })
+            }
+          >
+            <Text style={styles.btnText}>Edit</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.deleteBtn}
+            onPress={() => handleDelete(item.id)}
+          >
+            <Text style={styles.btnText}>Delete</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -84,20 +169,92 @@ export default function HomeScreen() {
       {/* Main Content */}
       <SafeAreaView style={styles.contentContainer}>
         <View style={styles.content}>
-          <View style={styles.illustrationContainer}>
-            <Image
-              source={require("../assets/images/Calender.png")}
-              style={styles.customImage}
-            />
-          </View>
-          <Text style={styles.noMedsText}>No active Medications</Text>
-          <Text style={styles.subText}>Would you like to set one up?</Text>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => router.push("/add-medication")}
-          >
-            <Text style={styles.addButtonText}>Add New Medication</Text>
-          </TouchableOpacity>
+          {medications.length === 0 ? (
+            <>
+              <View style={styles.illustrationContainer}>
+                <Image
+                  source={require("../assets/images/Calender.png")}
+                  style={styles.customImage}
+                />
+              </View>
+              <Text style={styles.noMedsText}>No active Medications</Text>
+              <Text style={styles.subText}>Would you like to set one up?</Text>
+              <TouchableOpacity
+                style={styles.addButton}
+                onPress={() => router.push("/add-medication")}
+              >
+                <Text style={styles.addButtonText}>Add New Medication</Text>
+              </TouchableOpacity>
+            </>
+          ) : (
+            <>
+              <Text style={styles.scheduleText}>
+                Here's Today's Schedule...
+              </Text>
+              <FlatList
+                data={medications}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <View style={styles.medCard}>
+                    <View style={styles.cardContent}>
+                      {/* Left Side - Medication Info */}
+                      <View style={styles.cardText}>
+                        <Text style={styles.medName}>{item.name}</Text>
+                        <Text style={styles.medDetail}>
+                          {item.dosageAmount} {item.dosageForm} •{" "}
+                          {item.frequency}
+                        </Text>
+                        {item.instructions && (
+                          <Text style={styles.medInstructions}>
+                            {item.instructions.length > 40
+                              ? `${item.instructions.slice(0, 40)}...`
+                              : item.instructions}
+                          </Text>
+                        )}
+                        <View style={styles.reminderIconWrapper}>
+                          <Ionicons
+                            name={
+                              item.dailyReminder
+                                ? "notifications-outline"
+                                : "notifications-off-outline"
+                            }
+                            size={18}
+                            color={item.dailyReminder ? "#007AFF" : "#8E8E93"}
+                          />
+                          <Text style={styles.reminderText}>
+                            {item.dailyReminder ? "Reminder On" : "No Reminder"}
+                          </Text>
+                        </View>
+                      </View>
+
+                      {/* Right Side - Buttons */}
+                      <View style={styles.cardButtons}>
+                        <TouchableOpacity
+                          style={styles.editBtn}
+                          onPress={() =>
+                            router.push({
+                              pathname: "/edit-medication",
+                              params: { id: item.id },
+                            })
+                          }
+                        >
+                          <Text style={styles.btnText}>Edit</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                          style={styles.deleteBtn}
+                          onPress={() => handleDelete(item.id)}
+                        >
+                          <Text style={styles.btnText}>Delete</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                )}
+                contentContainerStyle={{ paddingBottom: 100 }}
+              />
+            </>
+          )}
         </View>
       </SafeAreaView>
 
@@ -131,10 +288,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F8F9FA",
-  },
+  container: { flex: 1, backgroundColor: "#F8F9FA" },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -149,6 +303,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     flex: 1,
+  },
+  customImage: {
+    width: 180,
+    height: 180,
+    resizeMode: "contain",
+    marginLeft: 90,
+    marginTop: 40,
   },
   headerTitle: {
     fontSize: 22,
@@ -177,19 +338,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
     paddingHorizontal: 16,
-    paddingVertical: 80,
-  },
-  illustrationContainer: {
-    marginBottom: 26,
-  },
-  customImage: {
-    width: 180,
-    height: 180,
-    resizeMode: "contain",
-    marginLeft: 20,
+    paddingVertical: 20,
   },
   noMedsText: {
     fontSize: 28,
@@ -197,23 +347,55 @@ const styles = StyleSheet.create({
     color: "#000",
     marginBottom: 8,
     fontFamily: "Nunito_700Bold",
+    textAlign: "center",
+  },
+  scheduleText: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#000",
+    marginBottom: 8,
+    fontFamily: "Nunito_700Bold",
+    marginLeft: 5,
+    marginTop: -5,
   },
   subText: {
     fontSize: 20,
     color: "#8E8E93",
     marginBottom: 24,
     fontFamily: "Nunito_700Bold",
+    textAlign: "center",
   },
   addButton: {
     backgroundColor: "#3B8EE2",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
+    alignSelf: "center",
   },
   addButtonText: {
     fontSize: 20,
     fontWeight: "600",
     color: "#FFFFFF",
+    fontFamily: "Nunito_700Bold",
+  },
+  medCard: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#E5E5EA",
+  },
+  medName: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#000",
+    fontFamily: "Nunito_700Bold",
+  },
+  medDetail: {
+    fontSize: 16,
+    color: "#444",
+    marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },
   bottomNav: {
@@ -240,5 +422,82 @@ const styles = StyleSheet.create({
     height: 60,
     resizeMode: "contain",
     marginTop: 35,
+  },
+  medCard: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: "#E5E5EA",
+  },
+
+  cardContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+
+  cardText: {
+    flex: 1,
+    paddingRight: 10,
+  },
+
+  cardButtons: {
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
+
+  editBtn: {
+    backgroundColor: "#007AFF",
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 6,
+    marginBottom: 8,
+  },
+
+  deleteBtn: {
+    backgroundColor: "#FF3B30",
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 6,
+  },
+
+  btnText: {
+    color: "#fff",
+    fontSize: 14,
+    fontFamily: "Nunito_700Bold",
+  },
+
+  medName: {
+    fontSize: 20,
+    fontWeight: "700",
+    fontFamily: "Nunito_700Bold",
+  },
+
+  medDetail: {
+    fontSize: 16,
+    color: "#333",
+    marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+  medInstructions: {
+    fontSize: 15,
+    color: "#555",
+    marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+
+  reminderIconWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 6,
+  },
+
+  reminderText: {
+    fontSize: 14,
+    marginLeft: 6,
+    color: "#444",
+    fontFamily: "Nunito_700Bold",
   },
 });
