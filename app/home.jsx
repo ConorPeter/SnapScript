@@ -15,6 +15,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../lib/firebaseConfig";
 import { useRouter } from "expo-router";
+import colors from "../lib/colors";
 import {
   doc,
   getDoc,
@@ -200,10 +201,23 @@ export default function HomeScreen() {
                       {/* Left Side - Medication Info */}
                       <View style={styles.cardText}>
                         <Text style={styles.medName}>{item.name}</Text>
-                        <Text style={styles.medDetail}>
-                          {item.dosageAmount} {item.dosageForm} •{" "}
-                          {item.frequency}
-                        </Text>
+                        <View style={styles.detailRow}>
+                          <Text style={styles.medDetail}>
+                            {item.dosageAmount} {item.dosageForm} |{" "}
+                            {item.frequency} |
+                          </Text>
+                          <Ionicons
+                            name={
+                              item.dailyReminder
+                                ? "notifications-outline"
+                                : "notifications-off-outline"
+                            }
+                            size={20}
+                            color={item.dailyReminder ? "#999" : "#999"}
+                            style={{ marginLeft: 6 }}
+                          />
+                        </View>
+
                         {item.instructions && (
                           <Text style={styles.medInstructions}>
                             {item.instructions.length > 40
@@ -211,26 +225,12 @@ export default function HomeScreen() {
                               : item.instructions}
                           </Text>
                         )}
-                        <View style={styles.reminderIconWrapper}>
-                          <Ionicons
-                            name={
-                              item.dailyReminder
-                                ? "notifications-outline"
-                                : "notifications-off-outline"
-                            }
-                            size={18}
-                            color={item.dailyReminder ? "#007AFF" : "#8E8E93"}
-                          />
-                          <Text style={styles.reminderText}>
-                            {item.dailyReminder ? "Reminder On" : "No Reminder"}
-                          </Text>
-                        </View>
                       </View>
 
                       {/* Right Side - Buttons */}
                       <View style={styles.cardButtons}>
                         <TouchableOpacity
-                          style={styles.editBtn}
+                          style={styles.iconButton}
                           onPress={() =>
                             router.push({
                               pathname: "/edit-medication",
@@ -238,20 +238,27 @@ export default function HomeScreen() {
                             })
                           }
                         >
-                          <Text style={styles.btnText}>Edit</Text>
+                          <Ionicons
+                            name="create-outline"
+                            size={20}
+                            color="#007AFF"
+                          />
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                          style={styles.deleteBtn}
+                          style={[styles.iconButton, styles.deleteButton]}
                           onPress={() => handleDelete(item.id)}
                         >
-                          <Text style={styles.btnText}>Delete</Text>
+                          <Ionicons
+                            name="trash-outline"
+                            size={20}
+                            color="#FF3B30"
+                          />
                         </TouchableOpacity>
                       </View>
                     </View>
                   </View>
                 )}
-                contentContainerStyle={{ paddingBottom: 100 }}
               />
             </>
           )}
@@ -288,7 +295,19 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F8F9FA" },
+  container: {
+    flex: 1,
+    backgroundColor: "#F8F9FA",
+  },
+  contentContainer: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+  },
+  content: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -304,21 +323,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
-  customImage: {
-    width: 180,
-    height: 180,
-    resizeMode: "contain",
-    marginLeft: 90,
-    marginTop: 40,
-  },
   headerTitle: {
     fontSize: 22,
     fontWeight: "600",
     color: "#000",
     marginTop: 40,
     marginLeft: 2,
-    fontFamily: "Nunito_700Bold",
     flexShrink: 1,
+    fontFamily: "Nunito_700Bold",
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    resizeMode: "contain",
+    marginTop: 35,
   },
   logoutButton: {
     marginTop: 40,
@@ -332,39 +350,37 @@ const styles = StyleSheet.create({
     color: "#F8F9FA",
     fontFamily: "Nunito_700Bold",
   },
-  contentContainer: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 20,
-  },
+
   noMedsText: {
     fontSize: 28,
-    fontWeight: "700",
     color: "#000",
     marginBottom: 8,
-    fontFamily: "Nunito_700Bold",
     textAlign: "center",
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
   },
   scheduleText: {
     fontSize: 24,
-    fontWeight: "700",
     color: "#000",
     marginBottom: 8,
-    fontFamily: "Nunito_700Bold",
-    marginLeft: 5,
     marginTop: -5,
+    marginLeft: 5,
+    fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
   },
   subText: {
     fontSize: 20,
     color: "#8E8E93",
     marginBottom: 24,
-    fontFamily: "Nunito_700Bold",
     textAlign: "center",
+    fontFamily: "Nunito_700Bold",
   },
+  btnText: {
+    color: "#fff",
+    fontSize: 14,
+    fontFamily: "Nunito_700Bold",
+  },
+
   addButton: {
     backgroundColor: "#3B8EE2",
     paddingVertical: 12,
@@ -374,30 +390,80 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     fontSize: 20,
-    fontWeight: "600",
     color: "#FFFFFF",
+    fontWeight: "600",
     fontFamily: "Nunito_700Bold",
+  },
+  editBtn: {
+    backgroundColor: "#007AFF",
+    paddingHorizontal: 14,
+    borderRadius: 6,
+    marginBottom: 8,
+  },
+  deleteBtn: {
+    backgroundColor: "#FF3B30",
+    paddingHorizontal: 14,
+    borderRadius: 6,
   },
   medCard: {
     backgroundColor: "#fff",
     borderRadius: 8,
-    padding: 16,
+    padding: 12, // Reduced padding
     marginBottom: 12,
     borderWidth: 1,
     borderColor: "#E5E5EA",
   },
+
+  cardContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+
+  cardButtons: {
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
+    height: "auto",
+    marginTop: 8,
+  },
+  cardText: {
+    flex: 1,
+    paddingRight: 10,
+  },
+  iconButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 6,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E5E5EA",
+    borderWidth: 1,
+    borderColor: "#007AFF",
+    marginBottom: 8,
+  },
+
+  deleteButton: {
+    borderColor: "#FF3B30",
+  },
+
   medName: {
-    fontSize: 20,
-    fontWeight: "700",
-    color: "#000",
+    fontSize: 24,
     fontFamily: "Nunito_700Bold",
+    fontWeight: "700",
   },
   medDetail: {
     fontSize: 16,
-    color: "#444",
+    color: "#333",
     marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },
+  medInstructions: {
+    fontSize: 16,
+    color: "#333",
+    marginTop: 4,
+    fontFamily: "Nunito_700Bold",
+  },
+
   bottomNav: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -417,87 +483,18 @@ const styles = StyleSheet.create({
     marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },
-  logo: {
-    width: 60,
-    height: 60,
+  customImage: {
+    width: 180,
+    height: 180,
     resizeMode: "contain",
-    marginTop: 35,
-  },
-  medCard: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#E5E5EA",
+    marginLeft: 90,
+    marginTop: 40,
   },
 
-  cardContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-  },
-
-  cardText: {
-    flex: 1,
-    paddingRight: 10,
-  },
-
-  cardButtons: {
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-  },
-
-  editBtn: {
-    backgroundColor: "#007AFF",
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 6,
-    marginBottom: 8,
-  },
-
-  deleteBtn: {
-    backgroundColor: "#FF3B30",
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 6,
-  },
-
-  btnText: {
-    color: "#fff",
-    fontSize: 14,
-    fontFamily: "Nunito_700Bold",
-  },
-
-  medName: {
-    fontSize: 20,
-    fontWeight: "700",
-    fontFamily: "Nunito_700Bold",
-  },
-
-  medDetail: {
-    fontSize: 16,
-    color: "#333",
-    marginTop: 4,
-    fontFamily: "Nunito_700Bold",
-  },
-  medInstructions: {
-    fontSize: 15,
-    color: "#555",
-    marginTop: 4,
-    fontFamily: "Nunito_700Bold",
-  },
-
-  reminderIconWrapper: {
+  detailRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 6,
-  },
-
-  reminderText: {
-    fontSize: 14,
-    marginLeft: 6,
-    color: "#444",
-    fontFamily: "Nunito_700Bold",
+    flexWrap: "wrap",
+    marginTop: 4,
   },
 });
