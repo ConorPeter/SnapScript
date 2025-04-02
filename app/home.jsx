@@ -230,7 +230,7 @@ export default function HomeScreen() {
                           <Ionicons
                             name="create-outline"
                             size={20}
-                            color="#007AFF"
+                            color="#3B8EE2"
                           />
                         </TouchableOpacity>
 

@@ -21,6 +21,9 @@ import colors from "../lib/colors";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../lib/firebaseConfig";
 import { Alert } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import axios from "axios";
+import { ActivityIndicator } from "react-native";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -39,6 +42,11 @@ export default function ManualEntryScreen() {
   const router = useRouter();
   const [isDosageFormModalVisible, setDosageFormModalVisible] = useState(false);
   const [isFrequencyModalVisible, setFrequencyModalVisible] = useState(false);
+  const [imageUri, setImageUri] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const GOOGLE_CLOUD_VISION_API_KEY = "";
+  const OPENAI_API_KEY = "";
 
   const dosageFormOptions = [
     "Tablet",
@@ -62,6 +70,110 @@ export default function ManualEntryScreen() {
     setShowDatePicker(false);
     setHasShownDatePicker(true);
     setRefillDate(currentDate);
+  };
+
+  const pickImage = async () => {
+    console.log("Starting image capture...");
+
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permission Denied", "Camera access is required.");
+      console.log("Camera permission denied.");
+      return;
+    }
+
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      base64: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      console.log("Image captured.");
+      setImageUri(result.assets[0].uri);
+      await analyzeImage(result.assets[0].base64);
+    } else {
+      console.log("Image capture canceled.");
+    }
+  };
+
+  const analyzeImage = async (base64Image) => {
+    setIsLoading(true);
+    console.log("Starting image analysis...");
+
+    try {
+      console.log("Sending image to Google Vision API...");
+      const visionRes = await axios.post(
+        `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_CLOUD_VISION_API_KEY}`,
+        {
+          requests: [
+            {
+              image: { content: base64Image },
+              features: [{ type: "TEXT_DETECTION" }],
+            },
+          ],
+        }
+      );
+
+      const fullText =
+        visionRes.data.responses[0]?.fullTextAnnotation?.text ||
+        "No text found.";
+      console.log("Extracted text from image:\n", fullText);
+
+      console.log("Sending extracted text to OpenAI...");
+      const aiRes = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "system",
+              content: `You are a medical assistant extracting structured prescription details. Return only the following in this format:
+  
+  - Medication Name:
+  - Dosage:
+  - Dosage Form:
+  - Instructions:`,
+            },
+            {
+              role: "user",
+              content: `Text:\n${fullText}`,
+            },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${OPENAI_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const responseText = aiRes.data.choices[0].message.content;
+      console.log("OpenAI structured response:\n", responseText);
+
+      const parsedData = {};
+      responseText.split("\n").forEach((line) => {
+        const [key, value] = line.split(":").map((item) => item.trim());
+        if (key && value !== undefined) {
+          const cleanedKey = key.replace(/^- /, "").trim();
+          parsedData[cleanedKey] = value;
+        }
+      });
+
+      console.log("Parsed structured data:", parsedData);
+
+      // Set the extracted fields
+      setMedicationName(parsedData["Medication Name"] || "");
+      setDosageAmount(parsedData["Dosage"] || "");
+      setDosageForm(parsedData["Dosage Form"] || "");
+      setInstructions(parsedData["Instructions"] || "");
+    } catch (error) {
+      console.error("Error during OCR or AI analysis:", error);
+      Alert.alert("Scan Error", "Failed to process image text.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onTimeChange = (event, selectedTime) => {
@@ -151,9 +263,29 @@ export default function ManualEntryScreen() {
             </View>
 
             {/* Scan Label Button */}
-            <TouchableOpacity style={styles.scanButton}>
+            <TouchableOpacity style={styles.scanButton} onPress={pickImage}>
               <Text style={styles.scanButtonText}>Scan Label</Text>
             </TouchableOpacity>
+
+            {isLoading && (
+              <View style={{ alignItems: "center" }}>
+                <Text
+                  style={{
+                    fontFamily: "Nunito_700Bold",
+                    fontSize: 20,
+                    color: "#000",
+                    marginBottom: 12,
+                  }}
+                >
+                  Analyzing label...
+                </Text>
+                <ActivityIndicator
+                  size="large"
+                  color={colors.Blue}
+                  style={{ marginBottom: 20 }}
+                />
+              </View>
+            )}
 
             {/* Medication Name */}
             <Text style={styles.label}>Medication Name</Text>

@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    color: "#000",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   content: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 22,
-    color: "#000",
+    color: colors.Black,
     marginTop: 30,
     marginBottom: 6,
     fontFamily: "Nunito_700Bold",
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   bodyText: {
-    fontSize: 18,
-    color: "#4A4A4A",
+    fontSize: 16,
+    color: "#5A5A5A",
     lineHeight: 24,
     marginBottom: 8,
     fontFamily: "Nunito_700Bold",
