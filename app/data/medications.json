@@ -1,7 +1,7 @@
 [
   {
     "name": "Ibuprofen",
-    "brand": "Advil",
+    "brand": "Advil, Example",
     "description": "Ibuprofen is a pain reliever and anti-inflammatory used to reduce fever and treat pain or inflammation.",
     "dosage": "200-400 mg every 4 to 6 hours as needed. Do not exceed 1200 mg/day without medical advice.",
     "sideEffects": "Nausea, dizziness, headache, stomach upset",

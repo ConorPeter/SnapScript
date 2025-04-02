@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 import { auth, db } from "../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import colors from "../lib/colors";
 
 export default function SignupScreen() {
   const router = useRouter();
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
   },
   logo: {
     width: 90,
@@ -130,13 +131,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#333",
+    color: colors.Black,
     marginBottom: 10,
     fontFamily: "Nunito_700Bold",
   },
   subtitle: {
     fontSize: 20,
-    color: "#999",
+    color: colors.Grey,
     marginBottom: 40,
     fontFamily: "Nunito_700Bold",
   },
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontSize: 22,
     fontWeight: "500",
-    color: "#333",
+    color: colors.Black,
     marginBottom: 5,
     marginLeft: 10,
     fontFamily: "Nunito_700Bold",
@@ -153,40 +154,40 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 50,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: colors.LightGrey,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
     fontSize: 18,
-    color: "#333",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   loginButton: {
     marginTop: 20,
     padding: 15,
     borderWidth: 1,
-    borderColor: "#3B8EE2",
+    borderColor: colors.Blue,
     borderRadius: 8,
     alignItems: "center",
     width: "100%",
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
   },
   loginButtonText: {
-    color: "#3B8EE2",
+    color: colors.Blue,
     fontSize: 20,
     fontWeight: "500",
     fontFamily: "Nunito_700Bold",
   },
   createAccountButton: {
     width: "100%",
-    backgroundColor: "#3B8EE2",
+    backgroundColor: colors.Blue,
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
   },
   createAccountText: {
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     fontSize: 20,
     fontWeight: "600",
     fontFamily: "Nunito_700Bold",

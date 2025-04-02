@@ -26,6 +26,33 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+const colorOptions = [
+  "#FFB6B9",
+  "#FFDAC1",
+  "#E2F0CB",
+  "#B5EAD7",
+  "#C7CEEA",
+  "#D5AAFF",
+  "#FFABAB",
+  "#FFD6A5",
+  "#FDFFB6",
+  "#CAFFBF",
+  "#A0E7E5",
+  "#B4F8C8",
+  "#FBE7C6",
+  "#FFAEBC",
+  "#A9DEF9",
+];
+
+const getColorFromName = (name) => {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % colorOptions.length;
+  return colorOptions[index];
+};
+
 export default function HomeScreen() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
@@ -45,10 +72,7 @@ export default function HomeScreen() {
       "Delete Medication",
       "Are you sure you want to delete this medication?",
       [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
+        { text: "Cancel", style: "cancel" },
         {
           text: "Delete",
           style: "destructive",
@@ -87,10 +111,14 @@ export default function HomeScreen() {
           orderBy("createdAt", "desc")
         );
         const medsSnapshot = await getDocs(medsQuery);
-        const medsData = medsSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const medsData = medsSnapshot.docs.map((doc) => {
+          const med = doc.data();
+          return {
+            id: doc.id,
+            ...med,
+            color: getColorFromName(med.name || "default"),
+          };
+        });
         setMedications(medsData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -100,50 +128,10 @@ export default function HomeScreen() {
     fetchUserData();
   }, []);
 
-  const renderMedItem = ({ item }) => (
-    <View style={styles.medCard}>
-      <View style={styles.cardContent}>
-        {/* Left Side - Medication Info */}
-        <View style={styles.cardText}>
-          <Text style={styles.medName}>{item.name}</Text>
-          <Text style={styles.medDetail}>
-            {item.dosageAmount} {item.dosageForm} • {item.frequency}
-          </Text>
-        </View>
-
-        {/* Right Side - Buttons */}
-        <View style={styles.cardButtons}>
-          <TouchableOpacity
-            style={styles.editBtn}
-            onPress={() =>
-              router.push({
-                pathname: "/edit-medication",
-                params: { id: item.id },
-              })
-            }
-          >
-            <Text style={styles.btnText}>Edit</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.deleteBtn}
-            onPress={() => handleDelete(item.id)}
-          >
-            <Text style={styles.btnText}>Delete</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       {Platform.OS === "android" && (
-        <StatusBar
-          backgroundColor="#FFFFFF"
-          barStyle="dark-content"
-          translucent={false}
-        />
+        <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
       )}
 
       {/* Header */}
@@ -153,15 +141,10 @@ export default function HomeScreen() {
             source={require("../assets/images/Logo.png")}
             style={styles.logo}
           />
-          <Text
-            style={styles.headerTitle}
-            numberOfLines={1}
-            ellipsizeMode="tail"
-          >
+          <Text style={styles.headerTitle}>
             Welcome{firstName ? `, ${firstName}` : ""}
           </Text>
         </View>
-
         <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
           <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>
@@ -196,9 +179,16 @@ export default function HomeScreen() {
                 data={medications}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                  <View style={styles.medCard}>
+                  <View
+                    style={[
+                      styles.medCard,
+                      {
+                        borderLeftWidth: 6,
+                        borderLeftColor: item.color,
+                      },
+                    ]}
+                  >
                     <View style={styles.cardContent}>
-                      {/* Left Side - Medication Info */}
                       <View style={styles.cardText}>
                         <Text style={styles.medName}>{item.name}</Text>
                         <View style={styles.detailRow}>
@@ -213,7 +203,7 @@ export default function HomeScreen() {
                                 : "notifications-off-outline"
                             }
                             size={20}
-                            color={item.dailyReminder ? "#999" : "#999"}
+                            color="#333"
                             style={{ marginLeft: 6 }}
                           />
                         </View>
@@ -227,7 +217,6 @@ export default function HomeScreen() {
                         )}
                       </View>
 
-                      {/* Right Side - Buttons */}
                       <View style={styles.cardButtons}>
                         <TouchableOpacity
                           style={styles.iconButton}
@@ -297,11 +286,11 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
   },
   contentContainer: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.OffWhite,
   },
   content: {
     flex: 1,
@@ -314,9 +303,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 10,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colors.White,
     borderBottomWidth: 1,
-    borderBottomColor: "#E5E5EA",
+    borderBottomColor: colors.FaintGrey,
   },
   headerLeft: {
     flexDirection: "row",
@@ -326,7 +315,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 22,
     fontWeight: "600",
-    color: "#000",
+    color: colors.Black,
     marginTop: 40,
     marginLeft: 2,
     flexShrink: 1,
@@ -342,18 +331,18 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: 20,
     padding: 8,
-    backgroundColor: "#3B8EE2",
+    backgroundColor: colors.Blue,
     borderRadius: 8,
   },
   logoutText: {
     fontSize: 18,
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     fontFamily: "Nunito_700Bold",
   },
 
   noMedsText: {
     fontSize: 28,
-    color: "#000",
+    color: colors.Black,
     marginBottom: 8,
     textAlign: "center",
     fontFamily: "Nunito_700Bold",
@@ -361,7 +350,7 @@ const styles = StyleSheet.create({
   },
   scheduleText: {
     fontSize: 24,
-    color: "#000",
+    color: colors.Black,
     marginBottom: 8,
     marginTop: -5,
     marginLeft: 5,
@@ -370,19 +359,19 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontSize: 20,
-    color: "#8E8E93",
+    color: colors.Grey,
     marginBottom: 24,
     textAlign: "center",
     fontFamily: "Nunito_700Bold",
   },
   btnText: {
-    color: "#fff",
+    color: colors.OffWhite,
     fontSize: 14,
     fontFamily: "Nunito_700Bold",
   },
 
   addButton: {
-    backgroundColor: "#3B8EE2",
+    backgroundColor: colors.Blue,
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
@@ -390,28 +379,18 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     fontSize: 20,
-    color: "#FFFFFF",
+    color: colors.OffWhite,
     fontWeight: "600",
     fontFamily: "Nunito_700Bold",
   },
-  editBtn: {
-    backgroundColor: "#007AFF",
-    paddingHorizontal: 14,
-    borderRadius: 6,
-    marginBottom: 8,
-  },
-  deleteBtn: {
-    backgroundColor: "#FF3B30",
-    paddingHorizontal: 14,
-    borderRadius: 6,
-  },
+
   medCard: {
-    backgroundColor: "#fff",
+    backgroundColor: colors.White,
     borderRadius: 8,
-    padding: 12, // Reduced padding
+    padding: 12,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: "#E5E5EA",
+    borderColor: colors.FaintGrey,
   },
 
   cardContent: {
@@ -436,14 +415,14 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#E5E5EA",
+    backgroundColor: colors.White,
     borderWidth: 1,
-    borderColor: "#007AFF",
+    borderColor: colors.Blue,
     marginBottom: 8,
   },
 
   deleteButton: {
-    borderColor: "#FF3B30",
+    borderColor: colors.Red,
   },
 
   medName: {
@@ -453,13 +432,13 @@ const styles = StyleSheet.create({
   },
   medDetail: {
     fontSize: 16,
-    color: "#333",
+    color: colors.Black,
     marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },
   medInstructions: {
     fontSize: 16,
-    color: "#333",
+    color: colors.Black,
     marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },
@@ -468,9 +447,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 10,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colors.White,
     borderTopWidth: 1,
-    borderTopColor: "#E5E5EA",
+    borderTopColor: colors.FaintGrey,
     paddingBottom: Platform.OS === "ios" ? 0 : 12,
   },
   navItem: {
@@ -479,7 +458,7 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontSize: 16,
-    color: "#8E8E93",
+    color: colors.Grey,
     marginTop: 4,
     fontFamily: "Nunito_700Bold",
   },

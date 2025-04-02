@@ -20,6 +20,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../lib/firebaseConfig";
 import colors from "../lib/colors";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -152,8 +153,17 @@ export default function ManualEntryScreen() {
       )}
 
       <SafeAreaView style={styles.contentContainer}>
+        {/* Back Button */}
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={styles.backButton}
+        >
+          <Ionicons name="arrow-back" size={44} color="#333" />
+        </TouchableOpacity>
+
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.content}>
+            {/* Header Section */}
             <View style={styles.headerContainer}>
               <Image
                 source={require("../assets/images/Logo.png")}
@@ -512,31 +522,39 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     resizeMode: "contain",
-    marginRight: 18,
+    marginRight: 5,
+    marginLeft: 60,
   },
   headerTitle: {
     fontSize: 28,
-    fontWeight: "700",
     color: "#000",
     fontFamily: "Nunito_700Bold",
   },
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: 5,
+    paddingHorizontal: 10,
     marginBottom: 5,
-    paddingHorizontal: 16,
-    paddingTop: 10,
   },
   logo: {
     width: 60,
     height: 60,
     resizeMode: "contain",
-    marginRight: 20,
+    marginRight: 5,
+    marginLeft: 30,
   },
   headerText: {
     fontSize: 28,
     fontWeight: "600",
     color: "#000",
     fontFamily: "Nunito_700Bold",
+  },
+  backButton: {
+    position: "absolute",
+    top: Platform.OS === "android" ? 60 : 60,
+    left: 10,
+    zIndex: 10,
   },
 });

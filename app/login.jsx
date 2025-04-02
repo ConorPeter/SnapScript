@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 import { auth } from "../lib/firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "expo-router";
+import colors from "../lib/colors";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -30,11 +31,11 @@ export default function LoginScreen() {
         email,
         password
       );
-      console.log("✅ Logged in:", userCredential.user);
+      console.log("Logged in:", userCredential.user);
       Alert.alert("Success", "Logged in!");
       router.replace("/home");
     } catch (error) {
-      console.error("❌ Login error:", error);
+      console.error("Login error:", error);
       Alert.alert("Login Failed", error.message);
     }
   };
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
     marginTop: -20,
   },
   logo: {
@@ -99,13 +100,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#333",
+    color: colors.Black,
     marginBottom: 10,
     fontFamily: "Nunito_700Bold",
   },
   subtitle: {
     fontSize: 24,
-    color: "#999",
+    color: colors.Grey,
     marginBottom: 30,
     fontFamily: "Nunito_700Bold",
   },
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontSize: 22,
     fontWeight: "500",
-    color: "#333",
+    color: colors.Black,
     marginBottom: 5,
     marginLeft: 10,
     fontFamily: "Nunito_700Bold",
@@ -122,24 +123,24 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 50,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: colors.LightGrey,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
     fontSize: 18,
-    color: "#333",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   loginButton: {
     width: "100%",
-    backgroundColor: "#3B8EE2",
+    backgroundColor: colors.Blue,
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
     marginTop: 10,
   },
   loginButtonText: {
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     fontSize: 20,
     fontFamily: "Nunito_700Bold",
   },
@@ -147,13 +148,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 15,
     borderWidth: 1,
-    borderColor: "#3B8EE2",
+    borderColor: colors.Blue,
     borderRadius: 8,
     alignItems: "center",
     width: "100%",
   },
   createAccountText: {
-    color: "#3B8EE2",
+    color: colors.Blue,
     fontSize: 20,
     fontFamily: "Nunito_700Bold",
   },

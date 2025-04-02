@@ -93,9 +93,11 @@ export default function MedSearch() {
                 })
               }
             >
-              <Text style={styles.resultTitle}>
-                {med.name} <Text style={styles.brand}>({med.brand})</Text>
-              </Text>
+              <View>
+                <Text style={styles.resultTitle}>{med.name}</Text>
+                <Text style={styles.brand}>{med.brand}</Text>
+              </View>
+
               <Text style={styles.resultDesc}>{med.description}</Text>
             </TouchableOpacity>
           ))}
@@ -194,9 +196,12 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito_700Bold",
   },
   brand: {
+    fontSize: 16,
     fontWeight: "400",
-    color: "#555",
+    color: "#666",
+    fontFamily: "Nunito_700Bold",
   },
+
   resultDesc: {
     marginTop: 4,
     fontSize: 14,

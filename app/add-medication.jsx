@@ -95,7 +95,7 @@ export default function ManualEntryScreen() {
 
     const medicationData = {
       name: medicationName,
-      dosage: dosageAmount,
+      dosageAmount,
       dosageForm,
       instructions,
       frequency,

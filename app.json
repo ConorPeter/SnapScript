@@ -27,10 +27,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#3B8EE2"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
+    "plugins": ["expo-router", "expo-font"],
     "experiments": {
       "typedRoutes": true
     }

@@ -8,11 +8,12 @@ import {
 } from "react-native";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import colors from "../lib/colors";
 
 export default function WelcomeScreen() {
   return (
     <SafeAreaView style={styles.safeArea} edges={["bottom"]}>
-      <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+      <StatusBar barStyle="dark-content" backgroundColor="#3B8EE2" />
 
       <View style={styles.container}>
         {/* Illustration Section */}
@@ -64,13 +65,13 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#3B8EE2",
+    backgroundColor: colors.Blue,
   },
   container: {
     flex: 1,
   },
   illustrationWrapper: {
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
     borderBottomLeftRadius: 50,
     borderBottomRightRadius: 50,
     overflow: "hidden",
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   },
   imageBottomMargin: {
     height: 20,
-    backgroundColor: "#F8F9FA",
+    backgroundColor: colors.OffWhite,
   },
   contentContainer: {
     flex: 1,
@@ -104,13 +105,13 @@ const styles = StyleSheet.create({
   appName: {
     fontSize: 38,
     fontWeight: "bold",
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     textAlign: "center",
     fontFamily: "Nunito_700Bold",
   },
   tagline: {
     fontSize: 18,
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     marginBottom: 80,
     textAlign: "center",
     fontFamily: "Nunito_700Bold",
@@ -125,12 +126,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     fontWeight: "600",
-    color: "#3B8EE2",
+    color: colors.Blue,
     fontFamily: "Nunito_700Bold",
   },
   terms: {
     fontSize: 14,
-    color: "#F8F9FA",
+    color: colors.OffWhite,
     textAlign: "center",
     opacity: 0.8,
     fontFamily: "Nunito_700Bold",
