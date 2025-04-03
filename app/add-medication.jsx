@@ -59,8 +59,10 @@ export default function ManualEntryScreen() {
   ];
   const frequencyOptions = [
     "Daily",
-    "Every 12 hours",
+    "Every 4 hours",
     "Every 8 hours",
+    "Every 12 hours",
+    "Every second day",
     "Weekly",
     "As Needed",
   ];

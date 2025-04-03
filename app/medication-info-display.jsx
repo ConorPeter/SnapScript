@@ -44,37 +44,102 @@ export default function MedicationDetailScreen() {
 
         {/* Content */}
         <ScrollView contentContainerStyle={styles.content}>
+          {/* Brand */}
           {brand && (
             <>
-              <Text style={styles.heading}>Brand Names</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {
+                    color: "#f08486",
+                    textShadowColor: "#00000022",
+                    textShadowOffset: { width: 0.5, height: 0.5 },
+                    textShadowRadius: 1,
+                  },
+                ]}
+              >
+                Brand Names
+              </Text>
               <Text style={styles.bodyText}>{brand}</Text>
             </>
           )}
 
+          {/* Description */}
           {description && (
             <>
-              <Text style={styles.heading}>Description</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {
+                    color: "#4ECDC4",
+                    textShadowColor: "#00000022",
+                    textShadowOffset: { width: 0.5, height: 0.5 },
+                    textShadowRadius: 1,
+                  },
+                ]}
+              >
+                Description
+              </Text>
               <Text style={styles.bodyText}>{description}</Text>
             </>
           )}
 
+          {/* Dosage */}
           {dosage && (
             <>
-              <Text style={styles.heading}>Dosage</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {
+                    color: "#FF9F1C",
+                    textShadowColor: "#00000022",
+                    textShadowOffset: { width: 0.5, height: 0.5 },
+                    textShadowRadius: 1,
+                  },
+                ]}
+              >
+                Dosage
+              </Text>
               <Text style={styles.bodyText}>{dosage}</Text>
             </>
           )}
 
+          {/* Side Effects */}
           {sideEffects && (
             <>
-              <Text style={styles.heading}>Potential Side Effects</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {
+                    color: "#5C7AEA",
+                    textShadowColor: "#00000022",
+                    textShadowOffset: { width: 0.5, height: 0.5 },
+                    textShadowRadius: 1,
+                  },
+                ]}
+              >
+                Potential Side Effects
+              </Text>
               <Text style={styles.bodyText}>{sideEffects}</Text>
             </>
           )}
 
+          {/* Important Info */}
           {importantInfo && (
             <>
-              <Text style={styles.heading}>Important Info</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {
+                    color: "#78D878",
+                    textShadowColor: "#00000022",
+                    textShadowOffset: { width: 0.5, height: 0.5 },
+                    textShadowRadius: 1,
+                  },
+                ]}
+              >
+                Important Info
+              </Text>
               <Text style={styles.bodyText}>{importantInfo}</Text>
             </>
           )}

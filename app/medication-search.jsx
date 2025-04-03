@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 28,
     fontWeight: "600",
-    color: "#000",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   searchContainer: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 20,
-    color: "#000",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   resultCard: {
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   resultTitle: {
     fontSize: 20,
     fontWeight: "600",
-    color: "#000",
+    color: colors.Black,
     fontFamily: "Nunito_700Bold",
   },
   brand: {

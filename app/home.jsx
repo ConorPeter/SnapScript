@@ -198,7 +198,7 @@ export default function HomeScreen() {
                           </Text>
                           <Ionicons
                             name={
-                              item.dailyReminder
+                              item.dailyReminder || item.refillReminder
                                 ? "notifications-outline"
                                 : "notifications-off-outline"
                             }
