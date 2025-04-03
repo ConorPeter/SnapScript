@@ -34,7 +34,6 @@ export default function SignupScreen() {
       );
       const user = userCredential.user;
 
-      // Save user to Firestore
       await setDoc(doc(db, "users", user.uid), {
         firstName,
         email,

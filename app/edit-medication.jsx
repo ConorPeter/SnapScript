@@ -21,6 +21,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../lib/firebaseConfig";
 import colors from "../lib/colors";
 import { Ionicons } from "@expo/vector-icons";
+import { useNotification } from "../contexts/NotificationContext";
 
 export default function ManualEntryScreen() {
   const [medicationName, setMedicationName] = useState("");
@@ -60,6 +61,7 @@ export default function ManualEntryScreen() {
 
   const { id } = useLocalSearchParams();
   const router = useRouter();
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     const fetchMedication = async () => {
@@ -90,6 +92,36 @@ export default function ManualEntryScreen() {
     fetchMedication();
   }, [id]);
 
+  const scheduleReminder = (med) => {
+    if (med.dailyReminder && med.reminderTime) {
+      const now = new Date();
+      const reminderTime = new Date(med.reminderTime);
+
+      const timeDifference =
+        reminderTime.getTime() - now.getTime() > 0
+          ? reminderTime.getTime() - now.getTime()
+          : 24 * 60 * 60 * 1000 + (reminderTime.getTime() - now.getTime());
+
+      setTimeout(() => {
+        showNotification("Medication Reminder", `Time to take ${med.name}!`);
+      }, timeDifference);
+    }
+
+    if (med.refillReminder && med.refillDate) {
+      const refillDate = new Date(med.refillDate);
+      refillDate.setHours(10, 0, 0, 0);
+
+      const now = new Date();
+      const timeDifference = refillDate.getTime() - now.getTime();
+
+      if (timeDifference > 0) {
+        setTimeout(() => {
+          showNotification("Refill Reminder", `Time to get more ${med.name}!`);
+        }, timeDifference);
+      }
+    }
+  };
+
   const handleUpdate = async () => {
     try {
       const user = auth.currentUser;
@@ -109,6 +141,9 @@ export default function ManualEntryScreen() {
 
       const medRef = doc(db, "users", user.uid, "medications", id);
       await updateDoc(medRef, updatedData);
+
+      // Schedule reminders after updating
+      scheduleReminder({ ...updatedData, id });
 
       Alert.alert("Success", "Medication updated.");
       router.push("/home");

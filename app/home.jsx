@@ -21,10 +21,10 @@ import {
   doc,
   getDoc,
   collection,
-  getDocs,
   query,
   orderBy,
   deleteDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import * as Notifications from "expo-notifications";
 
@@ -77,17 +77,34 @@ export default function HomeScreen() {
           const now = new Date();
           const reminderTime = new Date(med.reminderTime);
 
-          const timeDifference =
-            reminderTime.getTime() - now.getTime() > 0
-              ? reminderTime.getTime() - now.getTime()
-              : 24 * 60 * 60 * 1000 + (reminderTime.getTime() - now.getTime());
+          if (reminderTime > now) {
+            const timeDifference = reminderTime.getTime() - now.getTime();
 
-          setTimeout(() => {
-            showNotification(
-              "Medication Reminder",
-              `Time to take ${med.name}!`
-            );
-          }, timeDifference);
+            setTimeout(() => {
+              showNotification(
+                "Medication Reminder",
+                `Time to take ${med.name}!`
+              );
+            }, timeDifference);
+          }
+        }
+
+        if (med.refillReminder && med.refillDate) {
+          const refillDate = new Date(med.refillDate);
+          refillDate.setHours(10, 0, 0, 0);
+
+          const now = new Date();
+
+          if (refillDate > now) {
+            const timeDifference = refillDate.getTime() - now.getTime();
+
+            setTimeout(() => {
+              showNotification(
+                "Refill Reminder",
+                `Time to get more ${med.name}!`
+              );
+            }, timeDifference);
+          }
         }
       });
     };
@@ -123,37 +140,51 @@ export default function HomeScreen() {
   };
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchUserData = () => {
       const user = auth.currentUser;
       if (!user) return;
 
       try {
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          setFirstName(data.firstName || "");
-        }
+        const userDocRef = doc(db, "users", user.uid);
+        getDoc(userDocRef).then((docSnap) => {
+          if (docSnap.exists()) {
+            const userData = docSnap.data();
+            setFirstName(userData.firstName || "");
+          } else {
+            console.error("User document does not exist.");
+          }
+        });
 
         const medsQuery = query(
           collection(db, "users", user.uid, "medications"),
           orderBy("createdAt", "desc")
         );
-        const medsSnapshot = await getDocs(medsQuery);
-        const medsData = medsSnapshot.docs.map((doc) => {
-          const med = doc.data();
-          return {
-            id: doc.id,
-            ...med,
-            color: getColorFromName(med.name || "default"),
-          };
+
+        const unsubscribe = onSnapshot(medsQuery, (medsSnapshot) => {
+          const medsData = medsSnapshot.docs.map((doc) => {
+            const med = doc.data();
+            return {
+              id: doc.id,
+              ...med,
+              color: getColorFromName(med.name || "default"),
+            };
+          });
+          setMedications(medsData);
         });
-        setMedications(medsData);
+
+        return unsubscribe;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchUserData();
+    const unsubscribe = fetchUserData();
+
+    return () => {
+      if (typeof unsubscribe === "function") {
+        unsubscribe();
+      }
+    };
   }, []);
 
   return (

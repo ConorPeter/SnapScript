@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { Modal, View, Text, Button } from "react-native";
+import { Modal, View, Text, Button, TouchableOpacity } from "react-native";
 
 type NotificationContextType = {
   showNotification: (title: string, message: string) => void;
@@ -63,12 +63,48 @@ export const NotificationProvider = ({
               }}
             >
               <Text
-                style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}
+                style={{
+                  fontSize: 24,
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                  color: "#3B8EE2",
+                  marginTop: 10,
+                  fontFamily: "Nunito_700Bold",
+                }}
               >
                 {title}
               </Text>
-              <Text style={{ marginBottom: 20 }}>{message}</Text>
-              <Button title="OK" onPress={hideNotification} />
+              <Text
+                style={{
+                  marginBottom: 20,
+                  fontSize: 20,
+                  fontFamily: "Nunito_700Bold",
+                  textAlign: "center",
+                }}
+              >
+                {message}
+              </Text>
+              <TouchableOpacity
+                onPress={hideNotification}
+                style={{
+                  backgroundColor: "#3B8EE2",
+                  paddingVertical: 12,
+                  paddingHorizontal: 16,
+                  borderRadius: 8,
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    fontFamily: "Nunito_700Bold",
+                  }}
+                >
+                  OK
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </Modal>
