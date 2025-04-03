@@ -26,7 +26,6 @@ import {
   deleteDoc,
   onSnapshot,
 } from "firebase/firestore";
-import * as Notifications from "expo-notifications";
 
 const colorOptions = [
   "#FFB6B9",

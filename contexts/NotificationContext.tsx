@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import { Modal, View, Text, Button, TouchableOpacity } from "react-native";
+import { Modal, View, Text, TouchableOpacity, Vibration } from "react-native";
+import { Audio } from "expo-av";
 
 type NotificationContextType = {
   showNotification: (title: string, message: string) => void;
@@ -26,10 +27,32 @@ export const NotificationProvider = ({
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
 
+  const playSound = async () => {
+    try {
+      const { sound } = await Audio.Sound.createAsync(
+        require("../assets/sounds/Notification.wav")
+      );
+      await sound.playAsync();
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          sound.unloadAsync();
+        }
+      });
+    } catch (error) {
+      console.error("Error playing sound:", error);
+    }
+  };
+
   const showNotification = (title: string, message: string) => {
     setTitle(title);
     setMessage(message);
     setVisible(true);
+
+    setTimeout(() => {
+      Vibration.vibrate([500, 500], false);
+    }, 0);
+
+    playSound();
   };
 
   const hideNotification = () => setVisible(false);

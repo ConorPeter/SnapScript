@@ -169,11 +169,21 @@ export default function ManualEntryScreen() {
 
   const handleRefillReminderToggle = (value) => {
     setRefillReminder(value);
-    if (value && !hasShownDatePicker) {
-      setShowDatePicker(true);
-    } else if (!value) {
+    if (value) {
+      setShowDatePicker(true); // Ensure the date picker remains visible
+    } else {
       setShowDatePicker(false);
       setHasShownDatePicker(false);
+    }
+  };
+
+  const handleDailyReminderToggle = (value) => {
+    setDailyReminder(value);
+    if (value) {
+      setShowTimePicker(true); // Ensure the time picker remains visible
+    } else {
+      setShowTimePicker(false);
+      setHasShownTimePicker(false);
     }
   };
 
@@ -336,21 +346,13 @@ export default function ManualEntryScreen() {
               <Text style={styles.label}>Daily Reminder?</Text>
               <Switch
                 value={dailyReminder}
-                onValueChange={(value) => {
-                  setDailyReminder(value);
-                  if (value && !hasShownTimePicker) {
-                    setShowTimePicker(true);
-                  } else if (!value) {
-                    setShowTimePicker(false);
-                    setHasShownTimePicker(false);
-                  }
-                }}
+                onValueChange={handleDailyReminderToggle}
                 trackColor={{ false: "#8E8E93", true: "#007AFF" }}
                 thumbColor={dailyReminder ? "#FFFFFF" : "#FFFFFF"}
               />
             </View>
 
-            {dailyReminder && showTimePicker && (
+            {dailyReminder && (
               <DateTimePicker
                 value={reminderTime}
                 mode="time"
@@ -369,7 +371,7 @@ export default function ManualEntryScreen() {
               />
             </View>
 
-            {refillReminder && showDatePicker && (
+            {refillReminder && (
               <DateTimePicker
                 value={refillDate}
                 mode="date"
