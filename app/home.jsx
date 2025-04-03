@@ -16,6 +16,7 @@ import { signOut } from "firebase/auth";
 import { auth, db } from "../lib/firebaseConfig";
 import { useRouter } from "expo-router";
 import colors from "../lib/colors";
+import { useNotification } from "../contexts/NotificationContext";
 import {
   doc,
   getDoc,
@@ -25,6 +26,7 @@ import {
   orderBy,
   deleteDoc,
 } from "firebase/firestore";
+import * as Notifications from "expo-notifications";
 
 const colorOptions = [
   "#FFB6B9",
@@ -57,6 +59,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [medications, setMedications] = useState([]);
+  const { showNotification } = useNotification();
 
   const handleLogout = async () => {
     try {
@@ -66,6 +69,31 @@ export default function HomeScreen() {
       Alert.alert("Logout failed", error.message);
     }
   };
+
+  useEffect(() => {
+    const scheduleReminders = () => {
+      medications.forEach((med) => {
+        if (med.dailyReminder && med.reminderTime) {
+          const now = new Date();
+          const reminderTime = new Date(med.reminderTime);
+
+          const timeDifference =
+            reminderTime.getTime() - now.getTime() > 0
+              ? reminderTime.getTime() - now.getTime()
+              : 24 * 60 * 60 * 1000 + (reminderTime.getTime() - now.getTime());
+
+          setTimeout(() => {
+            showNotification(
+              "Medication Reminder",
+              `Time to take ${med.name}!`
+            );
+          }, timeDifference);
+        }
+      });
+    };
+
+    scheduleReminders();
+  }, [medications]);
 
   const handleDelete = async (id) => {
     Alert.alert(
