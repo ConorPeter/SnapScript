@@ -1,11 +1,11 @@
 [
   {
     "name": "Ibuprofen",
-    "brand": "Advil, Example",
-    "description": "Ibuprofen is a pain reliever and anti-inflammatory used to reduce fever and treat pain or inflammation.",
-    "dosage": "200-400 mg every 4 to 6 hours as needed. Do not exceed 1200 mg/day without medical advice.",
-    "sideEffects": "Nausea, dizziness, headache, stomach upset",
-    "importantInfo": "Take with food or milk to reduce stomach upset. Avoid using with other NSAIDs. Long-term use may increase risk of heart attack or stroke."
+    "brand": "Advil",
+    "description": "Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) that is widely used to alleviate pain, reduce fever, and diminish inflammation. It works by inhibiting the production of prostaglandins, chemicals in the body that trigger pain and inflammation. This medication is commonly employed for a range of conditions, from minor aches and pains to more significant discomfort related to arthritis, muscle strains, or injuries.",
+    "dosage": "For adults, the typical dosage is 200-400 mg taken every 4 to 6 hours as needed. It is important not to exceed 1200 mg per day without prior consultation with a healthcare professional. Patients are advised to start with the lowest effective dose and adjust based on the severity of symptoms, always adhering to the specific recommendations provided by their doctor or the medication packaging.",
+    "sideEffects": "Common side effects include nausea, dizziness, headache, and stomach upset. In some instances, individuals may also experience mild gastrointestinal discomfort, such as heartburn or indigestion. More rarely, serious side effects like gastrointestinal bleeding, ulceration, kidney impairment, or allergic reactions can occur. If any side effects become severe or persist, it is important to seek medical advice promptly.",
+    "importantInfo": "It is recommended to take ibuprofen with food or milk to help reduce the risk of stomach irritation. Avoid combining this medication with other NSAIDs, as this can increase the risk of gastrointestinal bleeding and other complications. Prolonged or excessive use may elevate the risk of cardiovascular events, such as heart attack or stroke, as well as potentially impair kidney function. Always consult a healthcare provider before starting, stopping, or altering the dosage, particularly if you have pre-existing health conditions or are taking other medications."
   },
   {
     "name": "Paracetamol",

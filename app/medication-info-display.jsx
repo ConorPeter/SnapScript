@@ -51,7 +51,7 @@ export default function MedicationDetailScreen() {
                 style={[
                   styles.heading,
                   {
-                    color: "#f08486",
+                    color: "#d06b6d",
                     textShadowColor: "#00000022",
                     textShadowOffset: { width: 0.5, height: 0.5 },
                     textShadowRadius: 1,
@@ -71,7 +71,7 @@ export default function MedicationDetailScreen() {
                 style={[
                   styles.heading,
                   {
-                    color: "#4ECDC4",
+                    color: "#3cb3a9",
                     textShadowColor: "#00000022",
                     textShadowOffset: { width: 0.5, height: 0.5 },
                     textShadowRadius: 1,
@@ -91,7 +91,7 @@ export default function MedicationDetailScreen() {
                 style={[
                   styles.heading,
                   {
-                    color: "#FF9F1C",
+                    color: "#e68b19",
                     textShadowColor: "#00000022",
                     textShadowOffset: { width: 0.5, height: 0.5 },
                     textShadowRadius: 1,
@@ -111,7 +111,7 @@ export default function MedicationDetailScreen() {
                 style={[
                   styles.heading,
                   {
-                    color: "#5C7AEA",
+                    color: "#4a65c9",
                     textShadowColor: "#00000022",
                     textShadowOffset: { width: 0.5, height: 0.5 },
                     textShadowRadius: 1,
@@ -131,7 +131,7 @@ export default function MedicationDetailScreen() {
                 style={[
                   styles.heading,
                   {
-                    color: "#78D878",
+                    color: "#5fb85f",
                     textShadowColor: "#00000022",
                     textShadowOffset: { width: 0.5, height: 0.5 },
                     textShadowRadius: 1,
@@ -150,7 +150,7 @@ export default function MedicationDetailScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F5F5" },
+  container: { flex: 1, backgroundColor: "white" },
   safeArea: { flex: 1, paddingHorizontal: 16, paddingTop: 16 },
   backButton: {
     position: "absolute",
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: 16,
-    color: "#5A5A5A",
+    color: colors.Black,
     lineHeight: 24,
     marginBottom: 8,
     fontFamily: "Nunito_700Bold",
