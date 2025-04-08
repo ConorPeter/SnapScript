@@ -638,5 +638,805 @@
     "dosage": "Adults: 100–200 mg once or twice daily.\n\nChildren: dosage depends on age — follow packaging or doctor’s advice.",
     "sideEffects": "Stomach cramps, diarrhea, bitter taste.\n\nRare: throat irritation (liquid form).",
     "importantInfo": "Stay well hydrated during use.\n\nNot for long-term use unless prescribed.\n\nDiscontinue if diarrhea or cramping occurs."
+  },
+  {
+    "name": "Domperidone",
+    "brand": "Motilium, Domstal, Domperon, Vomistop, Costi.",
+    "description": "Domperidone is a medication used to relieve nausea, vomiting, bloating, and stomach discomfort by increasing the movement of the stomach and intestines.",
+    "dosage": "10 mg up to three times daily, 15–30 minutes before meals.\n\nDo not exceed 30 mg in 24 hours without medical advice.",
+    "sideEffects": "Dry mouth, abdominal cramps, dizziness.\n\nRare: irregular heartbeat or QT prolongation.",
+    "importantInfo": "Do not use long term unless advised.\n\nAvoid if you have heart rhythm disorders.\n\nReport chest pain or fainting immediately."
+  },
+  {
+    "name": "Donepezil",
+    "brand": "Aricept, Donetaz, Donecept, Donetec, Alzepil.",
+    "description": "Donepezil is used to treat symptoms of Alzheimer's disease. It works by increasing levels of acetylcholine in the brain to improve memory and cognitive function.",
+    "dosage": "Start with 5 mg once daily at bedtime.\n\nMay increase to 10 mg daily after 4–6 weeks if tolerated.",
+    "sideEffects": "Nausea, diarrhea, insomnia, muscle cramps.\n\nSerious: fainting, slow heart rate, seizures.",
+    "importantInfo": "Take at bedtime to reduce nausea.\n\nMay take a few weeks for effects to be noticeable.\n\nContinue even if no immediate improvement is seen."
+  },
+  {
+    "name": "Dosulepin",
+    "brand": "Prothiaden, Dothiepin, Dothep, Thaden, Dosulin.",
+    "description": "Dosulepin is a tricyclic antidepressant used to treat depression and anxiety. It works by increasing the levels of serotonin and norepinephrine in the brain.",
+    "dosage": "Typical dose: 75–150 mg daily in divided doses or once at bedtime.\n\nStart low and increase gradually under supervision.",
+    "sideEffects": "Drowsiness, dry mouth, constipation, blurred vision.\n\nOverdose can be fatal — use with caution.",
+    "importantInfo": "Not a first-line antidepressant — reserved for cases not responding to others.\n\nAvoid alcohol and driving.\n\nDo not stop suddenly without medical advice."
+  },
+  {
+    "name": "Doxazosin",
+    "brand": "Cardura, Doxadura, Raporsin, Doxapress, Duracin.",
+    "description": "Doxazosin is an alpha-blocker used to treat high blood pressure and symptoms of an enlarged prostate (BPH). It relaxes blood vessels and urinary tract muscles.",
+    "dosage": "Initial dose: 1 mg once daily.\n\nMaintenance: 2–8 mg daily depending on response.",
+    "sideEffects": "Dizziness, fatigue, headache, low blood pressure.\n\nFirst dose may cause fainting — known as 'first-dose effect'.",
+    "importantInfo": "Take at bedtime to reduce dizziness.\n\nStand up slowly to avoid lightheadedness.\n\nMonitor blood pressure regularly."
+  },
+  {
+    "name": "Doxycycline",
+    "brand": "Vibramycin, Doryx, Monodox, Periostat, Doxytab.",
+    "description": "Doxycycline is a tetracycline antibiotic used to treat a variety of infections, including respiratory tract infections, acne, and sexually transmitted diseases.",
+    "dosage": "Typical dose: 100 mg once or twice daily.\n\nInitial dose may be 200 mg followed by maintenance dosing.",
+    "sideEffects": "Nausea, sun sensitivity, upset stomach.\n\nRare: esophageal irritation, tooth discoloration (children).",
+    "importantInfo": "Take with plenty of water and remain upright for 30 minutes.\n\nAvoid milk, antacids, or supplements containing calcium or iron close to dosing.\n\nNot recommended during pregnancy or for children under 8."
+  },
+  {
+    "name": "Duloxetine",
+    "brand": "Cymbalta, Yentreve, Ariclaim, Duzela, Dulane.",
+    "description": "Duloxetine is a serotonin-norepinephrine reuptake inhibitor (SNRI) used to treat depression, anxiety, nerve pain, and fibromyalgia.",
+    "dosage": "Typical dose: 30–60 mg once daily.\n\nMaximum: 120 mg per day for some conditions.",
+    "sideEffects": "Nausea, dry mouth, fatigue, increased sweating.\n\nMay raise blood pressure or cause withdrawal symptoms if stopped abruptly.",
+    "importantInfo": "Do not stop suddenly — taper gradually under medical guidance.\n\nMonitor for mood changes or suicidal thoughts, especially early in treatment.\n\nMay take a few weeks for full effects."
+  },
+  {
+    "name": "Edoxaban",
+    "brand": "Lixiana, Savaysa, Edoxa, Roteas.",
+    "description": "Edoxaban is a direct oral anticoagulant (DOAC) used to prevent stroke in atrial fibrillation and treat or prevent deep vein thrombosis (DVT) and pulmonary embolism (PE).",
+    "dosage": "Typical dose: 60 mg once daily.\n\nReduced to 30 mg daily in patients with renal impairment or low body weight.",
+    "sideEffects": "Bleeding, bruising, anemia.\n\nRare: liver enzyme changes or allergic reactions.",
+    "importantInfo": "Do not miss doses or stop without consulting your doctor.\n\nAvoid NSAIDs or aspirin unless prescribed.\n\nNo routine blood monitoring required, but kidney function should be checked."
+  },
+  {
+    "name": "Empagliflozin",
+    "brand": "Jardiance, Glyxambi (combo), Synjardy (combo), Empa, Jardiva.",
+    "description": "Empagliflozin is an SGLT2 inhibitor used to treat type 2 diabetes, heart failure, and chronic kidney disease. It helps reduce blood sugar by promoting glucose excretion in urine.",
+    "dosage": "Starting dose: 10 mg once daily.\n\nMay be increased to 25 mg once daily if needed.",
+    "sideEffects": "Urinary tract infections, genital infections, increased urination.\n\nRare: dehydration, ketoacidosis, Fournier’s gangrene.",
+    "importantInfo": "Drink plenty of fluids.\n\nMonitor for unusual symptoms like abdominal pain or weakness.\n\nNot suitable for type 1 diabetes or during active infections."
+  },
+  {
+    "name": "Enalapril",
+    "brand": "Innovace, Renitec, Vasotec, Envas, Napril.",
+    "description": "Enalapril is an ACE inhibitor used to treat high blood pressure, heart failure, and kidney problems in people with diabetes. It helps relax blood vessels.",
+    "dosage": "Hypertension: 5–20 mg once or twice daily.\n\nHeart failure: start with 2.5 mg and titrate based on tolerance and kidney function.",
+    "sideEffects": "Dry cough, dizziness, headache.\n\nRare: high potassium, kidney dysfunction, angioedema.",
+    "importantInfo": "Monitor kidney function and potassium.\n\nAvoid potassium supplements unless advised.\n\nInform your doctor if you experience swelling of the face or lips."
+  },
+  {
+    "name": "Eplerenone",
+    "brand": "Inspra, Epleridone, Selipran, Eplar, Eplecard.",
+    "description": "Eplerenone is a potassium-sparing diuretic used to treat heart failure and high blood pressure. It works by blocking aldosterone receptors.",
+    "dosage": "Heart failure: 25 mg once daily, may increase to 50 mg.\n\nHypertension: 50 mg once daily, max 100 mg/day.",
+    "sideEffects": "High potassium, dizziness, diarrhea.\n\nRare: breast tenderness or enlargement, especially in men.",
+    "importantInfo": "Monitor potassium and kidney function regularly.\n\nAvoid potassium-rich foods or supplements.\n\nUse caution with other medications that raise potassium."
+  },
+  {
+    "name": "Erythromycin",
+    "brand": "Erythrocin, Erymax, Erythroped, Ilosone, Erybid.",
+    "description": "Erythromycin is a macrolide antibiotic used to treat chest infections, skin infections, and STIs. It’s often used when patients are allergic to penicillin.",
+    "dosage": "Typical adult dose: 250–500 mg every 6 hours.\n\nChildren’s dosing is weight-based and varies by infection.",
+    "sideEffects": "Nausea, abdominal pain, diarrhea.\n\nCan cause liver issues or QT prolongation in rare cases.",
+    "importantInfo": "Take with or just after food.\n\nAvoid with certain heart or seizure medications — check with your doctor.\n\nFinish the course even if you feel better."
+  },
+  {
+    "name": "Escitalopram",
+    "brand": "Cipralex, Lexapro, Esram, Esopral, Es-Citalopram.",
+    "description": "Escitalopram is an SSRI antidepressant used to treat depression and generalized anxiety disorder. It increases serotonin levels in the brain.",
+    "dosage": "Starting dose: 10 mg once daily.\n\nMay be increased to 20 mg daily depending on response.",
+    "sideEffects": "Nausea, headache, insomnia, sexual dysfunction.\n\nMay initially increase anxiety or agitation.",
+    "importantInfo": "May take several weeks to take full effect.\n\nAvoid stopping suddenly — taper under medical supervision.\n\nMonitor for mood changes, especially in the first few weeks."
+  },
+  {
+    "name": "Esomeprazole",
+    "brand": "Nexium, Esomac, Esoz, Esotrex, Nexotac.",
+    "description": "Esomeprazole is a proton pump inhibitor (PPI) used to treat acid reflux, heartburn, ulcers, and conditions involving excessive stomach acid.",
+    "dosage": "Typical dose: 20–40 mg once daily.\n\nSome cases (e.g. ulcers or H. pylori treatment) may require twice-daily dosing temporarily.",
+    "sideEffects": "Headache, abdominal pain, constipation, dry mouth.\n\nLong-term: risk of low magnesium, B12 deficiency, fractures.",
+    "importantInfo": "Take at least 30 minutes before meals.\n\nDo not crush or chew tablets.\n\nUse the lowest effective dose for the shortest duration."
+  },
+  {
+    "name": "Ezetimibe",
+    "brand": "Ezetrol, Ezedoc, Ezerex, Liponorm-EZ, Zetia.",
+    "description": "Ezetimibe is a cholesterol-lowering medication that reduces absorption of cholesterol from the small intestine. It is often used with statins.",
+    "dosage": "10 mg once daily, with or without food.\n\nCan be used alone or in combination with a statin.",
+    "sideEffects": "Muscle pain, fatigue, diarrhea.\n\nRare: liver enzyme elevation, allergic reactions.",
+    "importantInfo": "Liver function should be monitored if used with statins.\n\nReport unexplained muscle pain or weakness.\n\nMaintain a cholesterol-lowering diet alongside medication."
+  },
+  {
+    "name": "Felodipine",
+    "brand": "Plendil, Felodur, Vascalpha, Felogard, Neofel.",
+    "description": "Felodipine is a calcium channel blocker used to treat high blood pressure and angina. It relaxes blood vessels and improves blood flow.",
+    "dosage": "Initial dose: 5 mg once daily.\n\nMay be adjusted between 2.5–10 mg depending on response.",
+    "sideEffects": "Flushing, headache, swollen ankles, dizziness.\n\nLess common: fatigue or palpitations.",
+    "importantInfo": "Take at the same time daily, preferably in the morning.\n\nAvoid grapefruit juice — it increases drug levels.\n\nDo not crush or chew extended-release tablets."
+  },
+  {
+    "name": "Fentanyl",
+    "brand": "Durogesic, Actiq, Abstral, Fencino, Instanyl.",
+    "description": "Fentanyl is a powerful opioid used to treat severe pain, especially in cancer patients. It is available as patches, lozenges, and injections.",
+    "dosage": "Transdermal patch: 12–100 mcg/hour changed every 72 hours.\n\nDose depends on previous opioid use and pain severity.",
+    "sideEffects": "Drowsiness, constipation, nausea, respiratory depression.\n\nHigh risk of overdose or dependence.",
+    "importantInfo": "Use exactly as prescribed — overdose can be fatal.\n\nAvoid heat sources near patches.\n\nStore securely and dispose of used patches safely."
+  },
+  {
+    "name": "Ferrous fumarate",
+    "brand": "Fersaday, Galfer FA, Ferrograd F, Ferrous-F, Haem Feron.",
+    "description": "Ferrous fumarate is an iron supplement used to treat and prevent iron-deficiency anemia. It helps replenish iron stores needed for red blood cell production.",
+    "dosage": "Typical adult dose: 200–210 mg once or twice daily.\n\nTake 30–60 minutes before meals for best absorption.",
+    "sideEffects": "Constipation, dark stools, nausea, abdominal discomfort.\n\nRare: allergic reactions.",
+    "importantInfo": "Take with vitamin C or orange juice to improve absorption.\n\nAvoid taking with tea, milk, or antacids.\n\nKeep out of reach of children — iron overdose can be fatal."
+  },
+  {
+    "name": "Ferrous sulfate",
+    "brand": "Feospan, Ironorm, Fero-Grad, Ferrograd, Galfer.",
+    "description": "Ferrous sulfate is a common iron supplement used to treat iron-deficiency anemia. It increases the levels of iron in the blood to support oxygen transport.",
+    "dosage": "Usual dose: 200 mg one to three times daily.\n\nOften taken for at least 3 months to replenish iron stores.",
+    "sideEffects": "Stomach upset, constipation, dark stools.\n\nRare: metallic taste, allergic reaction.",
+    "importantInfo": "Take on an empty stomach for better absorption.\n\nDo not take with tea, dairy, or calcium supplements.\n\nSwallow whole tablets — do not crush or chew."
+  },
+  {
+    "name": "Fexofenadine",
+    "brand": "Telfast, Allegra, Fexodane, Fexo, Allerfexo.",
+    "description": "Fexofenadine is a non-drowsy antihistamine used to treat allergies such as hay fever, urticaria, and seasonal rhinitis.",
+    "dosage": "Adults: 120–180 mg once daily.\n\nChildren’s dose varies by age — typically 30–60 mg once or twice daily.",
+    "sideEffects": "Headache, nausea, drowsiness (rare), dizziness.\n\nOccasionally: dry mouth or indigestion.",
+    "importantInfo": "Avoid grapefruit juice — may reduce absorption.\n\nTake with water on an empty stomach if possible.\n\nDo not exceed the recommended dose."
+  },
+  {
+    "name": "Finasteride",
+    "brand": "Proscar, Propecia, Finara, Finax, Fincar.",
+    "description": "Finasteride is used to treat enlarged prostate (BPH) and male-pattern hair loss by inhibiting the conversion of testosterone to DHT.",
+    "dosage": "BPH: 5 mg once daily.\n\nHair loss: 1 mg once daily.",
+    "sideEffects": "Decreased libido, erectile dysfunction, breast tenderness.\n\nRare: depression, allergic reaction, breast lumps.",
+    "importantInfo": "Not for use by women or children.\n\nPregnant women should not handle crushed tablets.\n\nMay take 3–6 months for noticeable effect."
+  },
+  {
+    "name": "Flucloxacillin",
+    "brand": "Floxapen, Staphylex, Flopen, Flox, Heracillin.",
+    "description": "Flucloxacillin is a penicillin-type antibiotic used to treat bacterial infections such as skin infections, bone infections, and infected wounds.",
+    "dosage": "Typical adult dose: 250–500 mg four times daily.\n\nBest taken on an empty stomach, 1 hour before or 2 hours after meals.",
+    "sideEffects": "Nausea, diarrhea, skin rash.\n\nRare: liver enzyme changes, allergic reactions.",
+    "importantInfo": "Complete the full course even if symptoms improve.\n\nInform your doctor if allergic to penicillin.\n\nTake doses evenly spaced throughout the day."
+  },
+  {
+    "name": "Fluconazole",
+    "brand": "Diflucan, Canesten Oral, Flucoral, Flucan, Zocon.",
+    "description": "Fluconazole is an antifungal medication used to treat yeast infections, thrush, and systemic fungal infections. It works by stopping fungal growth.",
+    "dosage": "Common dose for thrush: 150 mg single dose.\n\nOther infections: 50–400 mg once daily, depending on severity.",
+    "sideEffects": "Headache, nausea, stomach pain, rash.\n\nRare: liver issues, allergic reactions, QT prolongation.",
+    "importantInfo": "Avoid alcohol while taking this medication.\n\nMay interact with other drugs — inform your doctor of all medications.\n\nTake at the same time each day if using longer term."
+  },
+  {
+    "name": "Fluoxetine (Prozac)",
+    "brand": "Prozac, Oxactin, Fluctin, Lovan, Fontex.",
+    "description": "Fluoxetine is an SSRI antidepressant used to treat depression, OCD, bulimia nervosa, and panic disorder by increasing serotonin levels in the brain.",
+    "dosage": "Starting dose: 20 mg once daily.\n\nMay be increased to a maximum of 60 mg/day depending on condition.",
+    "sideEffects": "Nausea, insomnia, headache, anxiety, sexual dysfunction.\n\nMay increase suicidal thoughts in young adults.",
+    "importantInfo": "May take 2–4 weeks for full effect.\n\nAvoid abrupt discontinuation — taper if stopping.\n\nMonitor mood, especially early in treatment."
+  },
+  {
+    "name": "Fluticasone",
+    "brand": "Flixotide, Flonase, Avamys, Cutivate, Seretide (combo).",
+    "description": "Fluticasone is a corticosteroid used to treat asthma, allergic rhinitis, and skin conditions. It reduces inflammation and swelling in affected areas.",
+    "dosage": "Inhaler: 100–500 mcg twice daily based on severity.\n\nNasal spray: 1–2 sprays per nostril daily.\n\nTopical: apply thinly 1–2 times daily as prescribed.",
+    "sideEffects": "Hoarseness, throat irritation, oral thrush.\n\nTopical use may cause skin thinning if overused.",
+    "importantInfo": "Rinse mouth after inhaler use to prevent thrush.\n\nDo not use nasal spray for more than 6 weeks without review.\n\nApply skin creams sparingly and avoid eyes."
+  },
+  {
+    "name": "Folic acid",
+    "brand": "Folvite, Avfol, Fefolvit, Folacin, Ferofol.",
+    "description": "Folic acid is a form of vitamin B9 used to treat or prevent folate deficiency anemia and to support pregnancy and fetal development.",
+    "dosage": "Deficiency: 5 mg once daily.\n\nPregnancy: 400–800 mcg daily, starting before conception and through the first trimester.",
+    "sideEffects": "Generally well tolerated.\n\nRare: rash, stomach upset, allergic reaction.",
+    "importantInfo": "Essential in pregnancy to prevent neural tube defects.\n\nMay be combined with iron supplements.\n\nTake consistently for full benefit."
+  },
+  {
+    "name": "Furosemide",
+    "brand": "Lasix, Frusemide, Frumex, Fusid, Diurin.",
+    "description": "Furosemide is a loop diuretic used to treat fluid retention (edema) and high blood pressure. It works by helping the kidneys remove excess fluid.",
+    "dosage": "Edema: 20–80 mg once or twice daily.\n\nHypertension: lower doses, often combined with other drugs.",
+    "sideEffects": "Frequent urination, dizziness, low potassium, dehydration.\n\nRare: gout, hearing loss with high doses.",
+    "importantInfo": "Take in the morning to avoid nighttime urination.\n\nMonitor electrolytes and kidney function.\n\nStay well hydrated unless otherwise advised."
+  },
+  {
+    "name": "Fusidic acid",
+    "brand": "Fucidin, Fucibet (combo), Fusigen, Stafine, Fucithalmic (eye).",
+    "description": "Fusidic acid is an antibiotic used topically or in eye drops to treat skin infections such as impetigo and infected dermatitis.",
+    "dosage": "Apply thinly to affected area 2–3 times daily.\n\nEye drops: 1 drop twice daily for up to 7 days.",
+    "sideEffects": "Skin irritation, stinging, mild rash.\n\nRare: allergic reaction or resistance with long-term use.",
+    "importantInfo": "Do not use for longer than 1–2 weeks without medical advice.\n\nAvoid contact with eyes unless using eye-specific formulation.\n\nWash hands after application."
+  },
+  {
+    "name": "Fybogel (ispaghula husk)",
+    "brand": "Fybogel, Ispagel, Regulan, Isogel, Effersyllium.",
+    "description": "Fybogel is a bulk-forming laxative used to treat constipation and maintain regular bowel movements. It contains ispaghula husk, a natural source of fiber.",
+    "dosage": "Adults: 1 sachet in water twice daily after meals.\n\nChildren: half dosage, based on age and response.",
+    "sideEffects": "Bloating, flatulence, stomach cramps.\n\nRare: allergic reactions or blockage if not taken with enough water.",
+    "importantInfo": "Always take with a full glass of water.\n\nDo not take before bedtime.\n\nAllow 12–24 hours for effect, may take up to 3 days."
+  },
+  {
+    "name": "Gabapentin",
+    "brand": "Neurontin, Gabarone, Gralise, Gabix, Gabatrex.",
+    "description": "Gabapentin is used to treat nerve pain, epilepsy, and sometimes anxiety. It works by affecting nerve signals in the brain.",
+    "dosage": "Initial dose: 300 mg once daily, increased gradually up to 1,800–3,600 mg daily in divided doses.\n\nTitrate based on response and tolerance.",
+    "sideEffects": "Drowsiness, dizziness, fatigue, swelling in hands/feet.\n\nMay affect coordination or mood.",
+    "importantInfo": "Do not stop abruptly — risk of seizures.\n\nTake at the same times daily.\n\nAvoid alcohol and driving until you know how it affects you."
+  },
+  {
+    "name": "Gaviscon (alginic acid)",
+    "brand": "Gaviscon, Algicon, Gavilast, Acidex, Peptac.",
+    "description": "Gaviscon contains alginic acid and antacids to relieve heartburn, indigestion, and acid reflux by forming a protective barrier over stomach contents.",
+    "dosage": "10–20 ml (2–4 teaspoons) after meals and at bedtime.\n\nChewable tablets: 2–4 tablets after meals and at bedtime.",
+    "sideEffects": "Rare: bloating, nausea, taste changes.\n\nGenerally well tolerated.",
+    "importantInfo": "Do not take with large amounts of water immediately after dosing.\n\nSafe for use in pregnancy.\n\nAvoid taking other medications within 2 hours of use."
+  },
+  {
+    "name": "Gliclazide",
+    "brand": "Diamicron, Reclazide, Zicron, Glyade, Diaprel.",
+    "description": "Gliclazide is a sulfonylurea used to treat type 2 diabetes. It helps the pancreas release more insulin to lower blood sugar levels.",
+    "dosage": "Modified-release: 30–120 mg once daily with breakfast.\n\nImmediate-release: 40–160 mg once or twice daily.",
+    "sideEffects": "Low blood sugar, weight gain, nausea.\n\nRare: liver enzyme changes, allergic reactions.",
+    "importantInfo": "Take with food to avoid low blood sugar.\n\nMonitor blood glucose regularly.\n\nDo not skip meals while using this medication."
+  },
+  {
+    "name": "Glimepiride",
+    "brand": "Amaryl, Glimy, Glimulin, Glypride, Diapride.",
+    "description": "Glimepiride is a sulfonylurea used for managing type 2 diabetes by stimulating insulin release from the pancreas.",
+    "dosage": "Start with 1 mg daily before breakfast.\n\nMaintenance: 1–4 mg daily; max 6 mg/day depending on response.",
+    "sideEffects": "Low blood sugar, weight gain, nausea.\n\nRare: rash, liver function changes.",
+    "importantInfo": "Take with food to prevent hypoglycemia.\n\nAvoid alcohol — can affect blood sugar control.\n\nMonitor blood sugar regularly and carry sugar if prone to lows."
+  },
+  {
+    "name": "Glyceryl trinitrate (GTN)",
+    "brand": "Nitrolingual, Nitrostat, Rectogesic, Nitro-Dur, Transiderm-Nitro.",
+    "description": "GTN is used to relieve chest pain (angina) and manage anal fissures. It works by widening blood vessels to improve blood flow and reduce heart strain.",
+    "dosage": "Sublingual spray/tablet: 300–600 mcg under tongue as needed for chest pain.\n\nRectal ointment: apply small amount twice daily for anal fissures.",
+    "sideEffects": "Headache, dizziness, flushing.\n\nMay cause low blood pressure or fainting.",
+    "importantInfo": "Sit down before using for angina to avoid dizziness.\n\nDo not use with erectile dysfunction drugs — risk of serious drop in blood pressure.\n\nStore spray in original container away from heat."
+  },
+  {
+    "name": "Haloperidol",
+    "brand": "Haldol, Serenace, Halol, Dozic, Einalon.",
+    "description": "Haloperidol is an antipsychotic used to treat schizophrenia, severe agitation, psychosis, and sometimes Tourette’s syndrome or acute nausea.",
+    "dosage": "Oral: 1–15 mg daily in divided doses.\n\nIntramuscular for acute agitation: 2–10 mg as needed.",
+    "sideEffects": "Drowsiness, restlessness, tremors, dry mouth.\n\nSerious: movement disorders (e.g., tardive dyskinesia), QT prolongation.",
+    "importantInfo": "Regularly monitor for side effects during long-term use.\n\nAvoid alcohol and driving.\n\nNot typically first-line for elderly patients with dementia."
+  },
+  {
+    "name": "Heparinoid",
+    "brand": "Hirudoid, Thrombophob, Mobilat, Hepathrombin, Venosan.",
+    "description": "Heparinoid creams and gels are used to treat bruises, sprains, and superficial thrombophlebitis. They help reduce inflammation and improve blood flow in the affected area.",
+    "dosage": "Apply 2–3 times daily to the affected area.\n\nMassage in gently unless otherwise instructed.",
+    "sideEffects": "Skin irritation, redness, itching.\n\nRare: allergic reaction.",
+    "importantInfo": "Do not apply to broken or infected skin.\n\nAvoid contact with eyes or mucous membranes.\n\nWash hands after use."
+  },
+  {
+    "name": "Hormone replacement therapy (HRT)",
+    "brand": "Evorel, Femoston, Premarin, Elleste, Kliovance.",
+    "description": "HRT is used to relieve menopausal symptoms by replacing declining hormone levels (estrogen and sometimes progesterone). It can be oral, transdermal, or vaginal.",
+    "dosage": "Depends on formulation — typically daily pills, patches changed twice weekly, or gels applied daily.",
+    "sideEffects": "Breast tenderness, mood changes, headache, bloating.\n\nIncreased risk of blood clots and certain cancers with prolonged use.",
+    "importantInfo": "Review treatment annually with a doctor.\n\nReport unusual vaginal bleeding, breast lumps, or persistent pain.\n\nUse lowest effective dose for the shortest duration."
+  },
+  {
+    "name": "Hydrocortisone",
+    "brand": "Cortef, Hydrocort, Locoid, Deltacortil, Dermacort.",
+    "description": "Hydrocortisone is a corticosteroid used for inflammation, allergic reactions, and adrenal insufficiency. Available as tablets, creams, injections, and suppositories.",
+    "dosage": "Topical: apply thinly 1–2 times daily.\n\nOral: 10–30 mg/day for adrenal insufficiency (divided doses).\n\nDose depends on condition and formulation.",
+    "sideEffects": "Skin thinning (topical), increased appetite, mood changes, insomnia.\n\nLong-term use: osteoporosis, adrenal suppression.",
+    "importantInfo": "Do not stop oral treatment suddenly — taper gradually.\n\nApply topical forms sparingly and avoid eyes.\n\nMonitor for infection or weight gain if using long term."
+  },
+  {
+    "name": "Hydroxocobalamin",
+    "brand": "Cyanokit, Neo-Cytamen, Hydroxine, Vitarubin, Cobalamin.",
+    "description": "Hydroxocobalamin is a long-acting form of vitamin B12 used to treat and prevent B12 deficiency, especially in pernicious anemia.",
+    "dosage": "1,000 mcg intramuscularly every 2–3 months (maintenance).\n\nInitial treatment: multiple doses over the first few weeks.",
+    "sideEffects": "Injection site pain, redness, mild diarrhea.\n\nRare: allergic reaction, low potassium.",
+    "importantInfo": "Essential for nerve and blood cell health.\n\nSafe for use in pregnancy.\n\nMonitor B12 and hemoglobin levels during treatment."
+  },
+  {
+    "name": "Hydroxychloroquine",
+    "brand": "Plaquenil, Quinoric, Axemal, Zentiva HCQ, Dolquine.",
+    "description": "Hydroxychloroquine is used to treat autoimmune diseases like lupus and rheumatoid arthritis, and as a malaria prophylactic. It modifies immune response and inflammation.",
+    "dosage": "RA/Lupus: 200–400 mg once daily or divided doses.\n\nMalaria prevention: 400 mg once weekly.",
+    "sideEffects": "Nausea, headache, visual disturbances.\n\nLong-term: retinal damage, muscle weakness.",
+    "importantInfo": "Requires regular eye exams during prolonged use.\n\nTake with food to reduce stomach upset.\n\nReport visual changes promptly."
+  },
+  {
+    "name": "Hyoscine hydrobromide (Kwells and Joy-Rides)",
+    "brand": "Kwells, Joy-Rides, Scopoderm, Buscopan, Travacalm.",
+    "description": "Hyoscine hydrobromide is used to prevent motion sickness and treat nausea. It works by blocking signals from the inner ear to the vomiting center in the brain.",
+    "dosage": "Adults: 300–600 mcg every 6–8 hours.\n\nChildren: 150–300 mcg depending on age and formulation.",
+    "sideEffects": "Dry mouth, blurred vision, drowsiness, constipation.\n\nRare: confusion, especially in older adults.",
+    "importantInfo": "May cause drowsiness — avoid driving.\n\nTake 30–60 minutes before travel for best effect.\n\nAvoid alcohol and use with caution in glaucoma or urinary retention."
+  },
+  {
+    "name": "Ibuprofen",
+    "brand": "Brufen, Calprofen, Fenbid, Ibugel, Ibuleve.",
+    "description": "Ibuprofen is an everyday painkiller for a range of aches and pains, including back pain, period pain, toothache and symptoms of colds, flu or coronavirus (COVID-19). It also treats inflammation such as sprains and strains, and pain from arthritis.",
+    "dosage": "For adults, the typical dosage is 200–400 mg taken every 4 to 6 hours as needed.\n\nFor children, the dosage depends on age and weight. Typically, 5–10 mg per kg of body weight every 6 to 8 hours is recommended, not to exceed 40 mg/kg per day.\n\nPatients are advised to start with the lowest effective dose and adjust based on the severity of symptoms.",
+    "sideEffects": "Common side effects may include: nausea, dizziness, headache, and stomach upset.\n\nMore rarely: gastrointestinal bleeding, ulcers, kidney issues, or allergic reactions.",
+    "importantInfo": "Take with food or milk to reduce stomach irritation.\n\nAvoid using with other NSAIDs.\n\nLong-term use may increase risks of heart, kidney, or stomach issues. Consult your doctor before making any changes, especially if you have health conditions or take other meds."
+  },
+  {
+    "name": "Indapamide",
+    "brand": "Natrilix, Lozol, Inda, Dapa, Fludex.",
+    "description": "Indapamide is a thiazide-like diuretic used to treat high blood pressure and fluid retention by helping the kidneys remove excess sodium and water.",
+    "dosage": "Hypertension: 1.5 mg modified-release once daily.\n\nEdema: 2.5 mg once daily, adjusted as needed.",
+    "sideEffects": "Dizziness, low potassium, dehydration, increased urination.\n\nRare: rash, sensitivity to sunlight.",
+    "importantInfo": "Take in the morning to avoid nighttime urination.\n\nMonitor kidney function and electrolytes.\n\nUse caution in diabetes and gout."
+  },
+  {
+    "name": "Insulin",
+    "brand": "Humulin, Novorapid, Lantus, Levemir, Apidra.",
+    "description": "Insulin is a hormone used to manage blood glucose in people with diabetes. It is classified by action type: rapid-acting, short-acting, intermediate, and long-acting.",
+    "dosage": "Highly individualized based on blood glucose levels, diet, and activity.\n\nAdministered subcutaneously — frequency varies by type (e.g., basal-bolus regimens).",
+    "sideEffects": "Low blood sugar (hypoglycemia), weight gain, injection site reactions.\n\nRare: allergic reactions, lipodystrophy.",
+    "importantInfo": "Rotate injection sites.\n\nMonitor blood sugar regularly.\n\nAlways carry fast-acting sugar and know signs of hypoglycemia."
+  },
+  {
+    "name": "Irbesartan",
+    "brand": "Avapro, Aprovel, Karvea, Irovel, Irbetan.",
+    "description": "Irbesartan is an angiotensin II receptor blocker (ARB) used to treat high blood pressure and protect kidneys in people with diabetes.",
+    "dosage": "Typical starting dose: 150 mg once daily.\n\nMay be increased to 300 mg daily based on response.",
+    "sideEffects": "Dizziness, fatigue, low blood pressure.\n\nRare: high potassium, kidney function decline.",
+    "importantInfo": "Monitor blood pressure, potassium, and kidney function regularly.\n\nAvoid potassium supplements unless advised.\n\nTake at the same time daily, with or without food."
+  },
+  {
+    "name": "Isosorbide mononitrate and isosorbide dinitrate",
+    "brand": "Imdur, Monoket, Isordil, Ismo, Cedocard.",
+    "description": "Isosorbide mononitrate and dinitrate are nitrates used to prevent chest pain (angina) by relaxing blood vessels and improving oxygen flow to the heart.",
+    "dosage": "Mononitrate: 20–60 mg once or twice daily.\n\nDinitrate: 10–40 mg two to three times daily.\n\nExtended-release formulations are also available.",
+    "sideEffects": "Headache, dizziness, flushing, low blood pressure.\n\nTolerance may develop with continuous use.",
+    "importantInfo": "Do not use with PDE5 inhibitors (e.g. Viagra).\n\nLeave a nitrate-free interval (usually overnight) to reduce tolerance.\n\nSit or lie down if dizziness occurs."
+  },
+  {
+    "name": "Isotretinoin (Roaccutane)",
+    "brand": "Roaccutane, Accutane, Oratane, Isotroin, Claravis.",
+    "description": "Isotretinoin (Roaccutane) is a powerful retinoid used to treat severe acne. It reduces oil production and inflammation in the skin.",
+    "dosage": "Typically 0.5–1 mg/kg/day for 16–24 weeks.\n\nDosage adjusted based on response and side effects.",
+    "sideEffects": "Dry skin/lips, joint pain, mood changes.\n\nSerious: birth defects if used during pregnancy.",
+    "importantInfo": "Strict pregnancy prevention required during and after use.\n\nRegular blood tests needed for liver function and lipids.\n\nAvoid vitamin A supplements and limit sun exposure."
+  },
+  {
+    "name": "Isotretinoin (Isotrex)",
+    "brand": "Isotrex, Isotrexin (with erythromycin).",
+    "description": "Topical isotretinoin is used for mild to moderate acne. It helps to unclog pores and reduce skin inflammation.",
+    "dosage": "Apply a thin layer once or twice daily to affected skin.\n\nAvoid broken or irritated skin.",
+    "sideEffects": "Skin irritation, redness, peeling, photosensitivity.\n\nMay worsen acne initially before improvement.",
+    "importantInfo": "Use sunscreen and avoid excessive sun.\n\nDo not apply near eyes or lips.\n\nWash hands after application and avoid harsh skin products."
+  },
+  {
+    "name": "Ketoconazole",
+    "brand": "Nizoral, Ketozole, Xolegel, Extina, Fungarest.",
+    "description": "Ketoconazole is an antifungal used topically for fungal skin infections and seborrheic dermatitis, and sometimes orally for serious fungal infections.",
+    "dosage": "Topical: apply once or twice daily for 2–4 weeks.\n\nShampoo: 2% used 2–3 times a week.\n\nOral (rarely): 200–400 mg daily under strict supervision.",
+    "sideEffects": "Skin irritation (topical), nausea, headache.\n\nOral: liver toxicity, hormonal effects.",
+    "importantInfo": "Topical use is generally safe — avoid contact with eyes.\n\nOral form requires liver function monitoring.\n\nDo not use other antifungal creams unless advised."
+  },
+  {
+    "name": "Labetalol",
+    "brand": "Trandate, Normodyne, Presolol, Amipress, Labrocol.",
+    "description": "Labetalol is a combined alpha- and beta-blocker used to treat high blood pressure, including during pregnancy and hypertensive emergencies.",
+    "dosage": "Oral: 100–400 mg twice daily.\n\nIV (for emergencies): 20 mg over 2 minutes, followed by further dosing as needed.",
+    "sideEffects": "Dizziness, fatigue, nausea, cold hands/feet.\n\nRare: shortness of breath or slow heart rate.",
+    "importantInfo": "Do not stop abruptly — taper gradually.\n\nMonitor blood pressure regularly.\n\nUse caution in asthma or heart conditions."
+  },
+  {
+    "name": "Lactulose",
+    "brand": "Duphalac, Lactugal, Enulose, Lactulax, Constulose.",
+    "description": "Lactulose is a synthetic sugar used as a laxative to treat constipation and hepatic encephalopathy. It draws water into the colon and softens stools.",
+    "dosage": "Constipation: 15–45 ml daily initially, adjusted based on response.\n\nHepatic encephalopathy: up to 30–45 ml three to four times daily.",
+    "sideEffects": "Flatulence, bloating, stomach cramps, diarrhea (at high doses).",
+    "importantInfo": "May take 1–2 days for full effect.\n\nEnsure adequate fluid intake.\n\nDo not use for more than a few days without medical advice."
+  },
+  {
+    "name": "Lamotrigine",
+    "brand": "Lamictal, Lametec, Lamitor, Lamogen, Lamictin.",
+    "description": "Lamotrigine is an anticonvulsant used to treat epilepsy and bipolar disorder. It stabilizes electrical activity in the brain.",
+    "dosage": "Start with 25 mg once daily, gradually increased over weeks.\n\nMaintenance dose: 100–400 mg/day in divided doses.",
+    "sideEffects": "Headache, dizziness, nausea, blurred vision.\n\nSerious: rash, including Stevens-Johnson syndrome.",
+    "importantInfo": "Increase dose slowly to reduce risk of rash.\n\nInform your doctor if any skin rash appears.\n\nDo not stop abruptly — risk of seizures."
+  },
+  {
+    "name": "Lansoprazole",
+    "brand": "Zoton, Prevacid, Inhibitol, Lanzol, Monolitum.",
+    "description": "Lansoprazole is a proton pump inhibitor (PPI) that reduces stomach acid. It’s used for reflux, ulcers, and Helicobacter pylori treatment.",
+    "dosage": "Typical adult dose: 15–30 mg once daily.\n\nMay be increased to 30 mg twice daily for severe cases.",
+    "sideEffects": "Headache, diarrhea, abdominal pain.\n\nLong-term: vitamin B12 or magnesium deficiency, fracture risk.",
+    "importantInfo": "Take 30 minutes before meals.\n\nDo not crush or chew capsules.\n\nUse for shortest duration necessary unless advised otherwise."
+  },
+  {
+    "name": "Latanoprost",
+    "brand": "Xalatan, Monopost, Xalacom (combo), Latanest, Latanoprost Sandoz.",
+    "description": "Latanoprost is an eye drop used to treat high pressure in the eye caused by glaucoma or ocular hypertension. It increases the drainage of fluid from the eye.",
+    "dosage": "1 drop in the affected eye(s) once daily in the evening.\n\nDo not use more than once daily.",
+    "sideEffects": "Eye irritation, redness, eyelash growth, darkening of the iris.\n\nRare: blurred vision, eye pain.",
+    "importantInfo": "Remove contact lenses before use and wait 15 minutes before reinserting.\n\nContinue using even if symptoms improve.\n\nStore in the refrigerator before opening, room temp after."
+  },
+  {
+    "name": "Lercanidipine",
+    "brand": "Zanidip, Lercadip, Zanipress (combo), Lercan, Cardia.",
+    "description": "Lercanidipine is a calcium channel blocker used to treat high blood pressure. It works by relaxing blood vessels, reducing strain on the heart.",
+    "dosage": "Typical dose: 10–20 mg once daily.\n\nTake 15–30 minutes before a meal.",
+    "sideEffects": "Swollen ankles, headache, flushing, dizziness.\n\nRare: palpitations, rash.",
+    "importantInfo": "Avoid grapefruit juice — may increase side effects.\n\nMonitor blood pressure regularly.\n\nDo not crush or chew tablets."
+  },
+  {
+    "name": "Letrozole",
+    "brand": "Femara, Letoval, Letronat, Oncolet, Letrusan.",
+    "description": "Letrozole is an aromatase inhibitor used to treat hormone-sensitive breast cancer in postmenopausal women by lowering estrogen levels.",
+    "dosage": "2.5 mg once daily, usually for 5 years.\n\nDuration may vary based on cancer type and risk.",
+    "sideEffects": "Hot flushes, fatigue, joint pain, bone thinning.\n\nLess common: dizziness, insomnia.",
+    "importantInfo": "Regular bone density scans may be needed.\n\nTake at the same time daily.\n\nTell your doctor if you have liver or bone issues."
+  },
+  {
+    "name": "Levetiracetam",
+    "brand": "Keppra, Levipil, Levexa, Levera, Torleva.",
+    "description": "Levetiracetam is an anticonvulsant used to treat epilepsy by stabilizing electrical activity in the brain.",
+    "dosage": "Initial dose: 500 mg twice daily.\n\nMaintenance: up to 1,500 mg twice daily depending on response.",
+    "sideEffects": "Drowsiness, dizziness, fatigue, irritability.\n\nRare: mood changes, suicidal thoughts.",
+    "importantInfo": "Do not stop abruptly — may increase seizure risk.\n\nInform doctor of mood changes or behavioral symptoms.\n\nCan be taken with or without food."
+  },
+  {
+    "name": "Levothyroxine",
+    "brand": "Eltroxin, Euthyrox, Thyronorm, Eltroxin, Levoxyl.",
+    "description": "Levothyroxine is a synthetic form of the thyroid hormone thyroxine (T4), used to treat hypothyroidism by restoring normal hormone levels.",
+    "dosage": "Initial dose: 25–50 mcg once daily.\n\nMaintenance: 50–200 mcg daily, adjusted based on TSH levels.",
+    "sideEffects": "Palpitations, anxiety, weight loss, heat intolerance.\n\nOverdose: symptoms of hyperthyroidism.",
+    "importantInfo": "Take on an empty stomach, 30–60 minutes before breakfast.\n\nDo not take with calcium, iron, or antacids — may affect absorption.\n\nMonitor thyroid levels regularly."
+  },
+  {
+    "name": "Lidocaine",
+    "brand": "Xylocaine, Lignocaine, Lidoderm, Versatis, AneCream.",
+    "description": "Lidocaine is a local anesthetic used to numb tissue in a specific area. It is available in creams, gels, sprays, injections, and patches.",
+    "dosage": "Topical: apply thinly as directed.\n\nInjections: administered by healthcare professional based on procedure.",
+    "sideEffects": "Tingling, redness, swelling at site.\n\nRare: dizziness, allergic reaction, irregular heartbeat (with large doses).",
+    "importantInfo": "Use only on intact skin unless advised.\n\nAvoid exceeding maximum dose to prevent toxicity.\n\nWash hands after application unless treating hands."
+  },
+  {
+    "name": "Linagliptin",
+    "brand": "Tradjenta, Trajenta, Ondero, Trazenta.",
+    "description": "Linagliptin is a DPP-4 inhibitor used to treat type 2 diabetes by increasing insulin secretion and decreasing glucagon levels in the blood.",
+    "dosage": "5 mg once daily, with or without food.\n\nNo dose adjustment required in renal impairment.",
+    "sideEffects": "Nasopharyngitis, headache, cough.\n\nRare: pancreatitis, joint pain, allergic reactions.",
+    "importantInfo": "Monitor blood sugar regularly.\n\nInform your doctor of severe abdominal pain or rash.\n\nNot for type 1 diabetes or ketoacidosis."
+  },
+  {
+    "name": "Lisinopril",
+    "brand": "Zestril, Prinivil, Linipril, Lisoril, Hipril.",
+    "description": "Lisinopril is an ACE inhibitor used to treat high blood pressure, heart failure, and after heart attacks. It relaxes blood vessels and lowers strain on the heart.",
+    "dosage": "Initial dose: 5–10 mg once daily.\n\nMaintenance: 10–40 mg once daily depending on condition and response.",
+    "sideEffects": "Dry cough, dizziness, low blood pressure.\n\nRare: angioedema, high potassium, kidney dysfunction.",
+    "importantInfo": "Monitor kidney function and potassium.\n\nAvoid potassium supplements unless advised.\n\nDo not take during pregnancy — risk to fetus."
+  },
+  {
+    "name": "Lithium",
+    "brand": "Priadel, Camcolit, Liskonum, Lithonate, Li-liquid.",
+    "description": "Lithium is a mood stabilizer used to treat bipolar disorder and sometimes recurrent depression. It helps reduce mood swings and prevent manic or depressive episodes.",
+    "dosage": "Highly individualized based on blood levels.\n\nTypical maintenance: 400–1,200 mg daily in divided doses.",
+    "sideEffects": "Tremor, thirst, nausea, weight gain.\n\nToxicity: confusion, vomiting, unsteady gait, seizures.",
+    "importantInfo": "Requires regular blood monitoring for levels, kidney, and thyroid function.\n\nMaintain consistent salt and fluid intake.\n\nAvoid NSAIDs and dehydration — can increase lithium levels."
+  },
+  {
+    "name": "Loperamide (Imodium)",
+    "brand": "Imodium, Diamode, Lopex, Arret, Norimode.",
+    "description": "Loperamide is used to treat diarrhea by slowing intestinal movement and reducing stool frequency.",
+    "dosage": "Initial dose: 4 mg, followed by 2 mg after each loose stool.\n\nMaximum: 16 mg per day in adults.",
+    "sideEffects": "Constipation, nausea, stomach cramps, dizziness.\n\nRare: bowel obstruction, drowsiness.",
+    "importantInfo": "Do not use for more than 2 days unless advised.\n\nAvoid if diarrhea is due to infection or fever.\n\nDrink fluids to prevent dehydration."
+  },
+  {
+    "name": "Loratadine (Clarityn)",
+    "brand": "Clarityn, Lorin, Lorfast, Alavert, Claratyne.",
+    "description": "Loratadine is a non-drowsy antihistamine used for hay fever, allergies, and hives. It blocks the action of histamine to reduce symptoms.",
+    "dosage": "Adults and children over 12: 10 mg once daily.\n\nChildren 2–12: 5 mg once daily (based on weight).",
+    "sideEffects": "Headache, fatigue, dry mouth.\n\nRare: allergic reaction or drowsiness.",
+    "importantInfo": "Usually does not cause drowsiness.\n\nCan be taken with or without food.\n\nAvoid taking more than directed."
+  },
+  {
+    "name": "Lorazepam",
+    "brand": "Ativan, Temesta, Loreev, Lorans, Alzepam.",
+    "description": "Lorazepam is a benzodiazepine used to treat anxiety, insomnia, and seizures. It has a calming effect on the brain.",
+    "dosage": "Anxiety: 1–4 mg daily in divided doses.\n\nSleep: 1–2 mg at bedtime.\n\nIV: used for acute seizures or agitation in hospital.",
+    "sideEffects": "Drowsiness, dizziness, weakness.\n\nRisk of dependence, withdrawal, confusion (especially in elderly).",
+    "importantInfo": "Short-term use only unless advised.\n\nAvoid alcohol and driving.\n\nTaper gradually to avoid withdrawal symptoms."
+  },
+  {
+    "name": "Losartan",
+    "brand": "Cozaar, Repace, Losacar, Angizaar, Preszar.",
+    "description": "Losartan is an angiotensin II receptor blocker (ARB) used to treat high blood pressure, heart failure, and kidney protection in diabetes.",
+    "dosage": "Typical dose: 50 mg once daily.\n\nMay be increased to 100 mg daily based on response.",
+    "sideEffects": "Dizziness, fatigue, low blood pressure.\n\nRare: high potassium, kidney function decline.",
+    "importantInfo": "Monitor blood pressure, kidney function, and potassium.\n\nAvoid potassium supplements or salt substitutes unless advised.\n\nTake at the same time each day."
+  },
+  {
+    "name": "Lymecycline",
+    "brand": "Tetralysal, Lymecin, Cyclidox, Aceclin, Lycycline.",
+    "description": "Lymecycline is a tetracycline antibiotic commonly used to treat acne and various bacterial infections including chest and urinary infections.",
+    "dosage": "Standard dose: 408 mg once daily.\n\nDuration depends on condition — acne typically treated for 8–12 weeks.",
+    "sideEffects": "Nausea, abdominal pain, diarrhea, sun sensitivity.\n\nRare: allergic reactions, fungal infections.",
+    "importantInfo": "Take with a full glass of water.\n\nAvoid milk, iron, or antacids near dosing time.\n\nUse sun protection and avoid prolonged exposure."
+  },
+  {
+    "name": "Macrogol",
+    "brand": "Movicol, Laxido, CosmoCol, Molaxole, Idrolax.",
+    "description": "Macrogol is a laxative used to treat constipation by retaining water in the bowel to soften stools and stimulate movement.",
+    "dosage": "1–3 sachets daily for constipation.\n\nHigher doses (up to 8 sachets) for fecal impaction — under medical advice.",
+    "sideEffects": "Bloating, gas, stomach discomfort.\n\nRare: electrolyte imbalance with prolonged use.",
+    "importantInfo": "Dissolve powder in water before use.\n\nCan be taken long term for chronic constipation.\n\nMaintain good hydration while using."
+  },
+  {
+    "name": "Mebendazole",
+    "brand": "Vermox, Ovex, Antiox, Wormstop, Combantrin-M.",
+    "description": "Mebendazole is an antiparasitic used to treat intestinal worm infections such as threadworm, roundworm, and whipworm.",
+    "dosage": "Single 100 mg dose for threadworm.\n\nRepeat in 2–3 weeks if needed.\n\nOther infections may require twice-daily dosing for 3 days.",
+    "sideEffects": "Abdominal pain, diarrhea, gas.\n\nRare: rash, allergic reactions, liver changes.",
+    "importantInfo": "Treat all household members for threadworm.\n\nMaintain hygiene and wash bedding during treatment.\n\nAvoid in pregnancy unless essential."
+  },
+  {
+    "name": "Mebeverine",
+    "brand": "Colofac, Duspatalin, Mebiz, Inteston, Spasmomen.",
+    "description": "Mebeverine is an antispasmodic used to relieve abdominal cramps, bloating, and discomfort associated with irritable bowel syndrome (IBS).",
+    "dosage": "135 mg tablets: one tablet three times daily before meals.\n\nModified-release capsules: 200 mg twice daily.",
+    "sideEffects": "Rare: allergic reactions (rash, itching, swelling).\n\nGenerally well tolerated.",
+    "importantInfo": "Do not crush or chew modified-release capsules.\n\nContinue taking regularly for consistent relief.\n\nSeek medical help for any signs of allergic reaction."
+  },
+  {
+    "name": "Medroxyprogesterone",
+    "brand": "Provera, Depo-Provera, Sayana Press, Cycrin, Farlutal.",
+    "description": "Medroxyprogesterone is a progestin hormone used for contraception, regulating menstrual cycles, or managing endometriosis and abnormal bleeding.",
+    "dosage": "Oral: 5–10 mg daily for 5–10 days per cycle.\n\nInjection (Depo-Provera): 150 mg every 12 weeks.",
+    "sideEffects": "Weight gain, breast tenderness, mood changes, menstrual irregularities.\n\nLong-term injection use: decreased bone density.",
+    "importantInfo": "May take time for periods to return after stopping.\n\nCalcium and vitamin D intake important during use.\n\nReport unusual bleeding or severe mood changes."
+  },
+  {
+    "name": "Melatonin",
+    "brand": "Circadin, Meloset, Slenyto, Restivit, Dormin.",
+    "description": "Melatonin is a hormone that regulates sleep-wake cycles. It is used to treat insomnia, jet lag, and delayed sleep phase disorder.",
+    "dosage": "2–5 mg 1–2 hours before bedtime.\n\nDose may vary depending on condition and age.",
+    "sideEffects": "Drowsiness, vivid dreams, headache, nausea.\n\nRare: mood changes or confusion.",
+    "importantInfo": "Avoid alcohol or caffeine near bedtime.\n\nBest taken at the same time each night.\n\nNot recommended for long-term use unless advised."
+  },
+  {
+    "name": "Memantine",
+    "brand": "Ebixa, Axura, Namenda, Memanxa, Marixino.",
+    "description": "Memantine is used to treat moderate to severe Alzheimer's disease. It works by regulating glutamate to improve memory, attention, and behavior.",
+    "dosage": "Starting dose: 5 mg once daily, increased gradually to 20 mg/day.\n\nUsually taken in divided doses.",
+    "sideEffects": "Dizziness, headache, confusion, constipation.\n\nMay cause hallucinations or agitation in some patients.",
+    "importantInfo": "Take with or without food.\n\nUse caution in patients with seizures or kidney issues.\n\nReport any sudden changes in mood or behavior."
+  },
+  {
+    "name": "Mesalazine",
+    "brand": "Asacol, Pentasa, Mezavant, Salofalk, Ipocol.",
+    "description": "Mesalazine is an anti-inflammatory drug used to treat and prevent flare-ups of ulcerative colitis and Crohn's disease by reducing inflammation in the colon.",
+    "dosage": "Typical oral dose: 2–4 g daily in divided doses.\n\nRectal formulations (suppositories/enemas) may be used for distal disease.",
+    "sideEffects": "Headache, nausea, abdominal pain, flatulence.\n\nRare: kidney issues, allergic rash, pancreatitis.",
+    "importantInfo": "Regular kidney function monitoring is advised.\n\nDo not crush or chew modified-release tablets.\n\nInform your doctor if you develop new abdominal pain or rash."
+  },
+  {
+    "name": "Metformin",
+    "brand": "Glucophage, Riomet, Glumetza, Fortamet, Obimet.",
+    "description": "Metformin is a first-line medication for type 2 diabetes. It lowers blood sugar by reducing glucose production in the liver and improving insulin sensitivity.",
+    "dosage": "Initial: 500 mg once or twice daily with meals.\n\nMaintenance: up to 2,000 mg/day in divided doses.",
+    "sideEffects": "Nausea, diarrhea, stomach upset.\n\nRare: lactic acidosis (serious).",
+    "importantInfo": "Take with food to reduce GI symptoms.\n\nDo not use in severe kidney or liver disease.\n\nTemporarily stop before major surgery or contrast imaging."
+  },
+  {
+    "name": "Methadone",
+    "brand": "Physeptone, Methadose, Diskets, Dolophine, Metadon.",
+    "description": "Methadone is a long-acting opioid used to treat pain and as part of opioid substitution therapy for heroin or morphine addiction.",
+    "dosage": "Opioid dependence: 10–30 mg daily, titrated based on withdrawal symptoms.\n\nPain: 2.5–10 mg every 8–12 hours as needed.",
+    "sideEffects": "Drowsiness, constipation, sweating, dry mouth.\n\nRisk of dependence, respiratory depression, QT prolongation.",
+    "importantInfo": "Dose changes must be made cautiously — long half-life.\n\nAvoid alcohol and sedatives.\n\nECG monitoring may be required for long-term use."
+  },
+  {
+    "name": "Methotrexate",
+    "brand": "Methoblastin, Maxtrex, Trexall, Rheumatrex, Nordimet.",
+    "description": "Methotrexate is an immunosuppressant used to treat autoimmune conditions (like rheumatoid arthritis, psoriasis) and certain cancers.",
+    "dosage": "Typically 7.5–25 mg once weekly (oral, subcutaneous, or IM).\n\nAlways taken once a week, not daily.",
+    "sideEffects": "Nausea, mouth ulcers, fatigue, low blood cell counts.\n\nSerious: liver toxicity, lung issues, infection risk.",
+    "importantInfo": "Take folic acid to reduce side effects.\n\nRegular blood tests required.\n\nDo not take NSAIDs or alcohol without medical advice."
+  },
+  {
+    "name": "Methylphenidate",
+    "brand": "Ritalin, Concerta, Medikinet, Equasym, Metadate.",
+    "description": "Methylphenidate is a stimulant used to treat ADHD and narcolepsy by increasing levels of dopamine and norepinephrine in the brain.",
+    "dosage": "Immediate-release: 5–20 mg 2–3 times daily.\n\nModified-release: 18–72 mg once daily depending on brand and age.",
+    "sideEffects": "Loss of appetite, insomnia, increased heart rate, anxiety.\n\nRare: tics, mood changes, growth suppression in children.",
+    "importantInfo": "Take in the morning to avoid insomnia.\n\nMonitor growth in children.\n\nAvoid abrupt discontinuation without medical advice."
+  },
+  {
+    "name": "Metoclopramide",
+    "brand": "Maxolon, Reglan, Pramin, Gastrobid, Clopra.",
+    "description": "Metoclopramide is used to treat nausea, vomiting, and delayed stomach emptying. It increases stomach and intestinal movement.",
+    "dosage": "10 mg up to three times daily.\n\nShort-term use (max 5 days) is recommended.",
+    "sideEffects": "Drowsiness, restlessness, diarrhea.\n\nRare: movement disorders (especially in long-term use).",
+    "importantInfo": "Limit use to short term due to risk of extrapyramidal symptoms.\n\nAvoid alcohol and sedatives.\n\nReport any muscle stiffness or unusual movements."
+  },
+  {
+    "name": "Metoprolol",
+    "brand": "Lopressor, Betaloc, Toprol-XL, Neobloc, Minax.",
+    "description": "Metoprolol is a beta-blocker used to treat high blood pressure, angina, and heart rhythm disorders. It slows the heart rate and reduces blood pressure.",
+    "dosage": "Typical dose: 50–100 mg once or twice daily.\n\nExtended-release forms available for once-daily dosing.",
+    "sideEffects": "Fatigue, dizziness, cold extremities, low heart rate.\n\nMay mask symptoms of low blood sugar in diabetics.",
+    "importantInfo": "Do not stop abruptly — taper off under supervision.\n\nTake with food to improve absorption.\n\nMonitor heart rate and blood pressure regularly."
+  },
+  {
+    "name": "Metronidazole",
+    "brand": "Flagyl, Metrogel, Metrogyl, Nidazole, Rozex.",
+    "description": "Metronidazole is an antibiotic and antiprotozoal used to treat bacterial vaginosis, pelvic infections, dental infections, and rosacea.",
+    "dosage": "Oral: 400–500 mg two to three times daily.\n\nTopical and vaginal formulations used once or twice daily.",
+    "sideEffects": "Metallic taste, nausea, dizziness.\n\nRare: seizures, peripheral neuropathy.",
+    "importantInfo": "Avoid alcohol during and for 48 hours after use — may cause severe reaction.\n\nTake with food if stomach upset occurs.\n\nComplete the course even if symptoms improve."
+  },
+  {
+    "name": "Mirabegron",
+    "brand": "Betmiga, Myrbetriq, Mirago, Betriq, Berogran.",
+    "description": "Mirabegron is used to treat overactive bladder symptoms like urgency, frequency, and urge incontinence. It relaxes the bladder muscle to increase storage capacity.",
+    "dosage": "Typical adult dose: 50 mg once daily.\n\nStart with 25 mg if needed, especially in elderly or with renal impairment.",
+    "sideEffects": "Increased blood pressure, urinary tract infections, headache.\n\nRare: fast heart rate, allergic reactions.",
+    "importantInfo": "Check blood pressure regularly during treatment.\n\nDo not crush or chew the tablets.\n\nMay take a few weeks to see full benefit."
+  },
+  {
+    "name": "Mirtazapine",
+    "brand": "Zispin, Remeron, Mirtaz, Avanza, Mirzaten.",
+    "description": "Mirtazapine is an antidepressant used for depression, anxiety, and sleep disorders. It works by affecting serotonin and norepinephrine levels.",
+    "dosage": "Starting dose: 15 mg at bedtime.\n\nMaintenance: 15–45 mg daily, usually taken at night due to sedative effects.",
+    "sideEffects": "Drowsiness, increased appetite, weight gain, dry mouth.\n\nMay cause vivid dreams or dizziness.",
+    "importantInfo": "Avoid alcohol — may increase drowsiness.\n\nDo not stop suddenly — taper under supervision.\n\nMay take 2–4 weeks to feel full benefit."
+  },
+  {
+    "name": "Molnupiravir (Lagevrio)",
+    "brand": "Lagevrio.",
+    "description": "Molnupiravir is an antiviral used to treat mild to moderate COVID-19 in high-risk adults to reduce the risk of hospitalization.",
+    "dosage": "800 mg (four 200 mg capsules) every 12 hours for 5 days.\n\nShould be started within 5 days of symptom onset.",
+    "sideEffects": "Diarrhea, nausea, dizziness.\n\nGenerally well tolerated in short courses.",
+    "importantInfo": "Not recommended in pregnancy.\n\nSwallow capsules whole with water.\n\nComplete the full course even if symptoms improve."
+  },
+  {
+    "name": "Mometasone",
+    "brand": "Nasonex, Elocon, Asmanex, Momate, Furovate.",
+    "description": "Mometasone is a corticosteroid used to treat asthma, allergic rhinitis, and inflammatory skin conditions. It reduces inflammation and itching.",
+    "dosage": "Nasal spray: 2 sprays per nostril once daily.\n\nInhaler: 220–440 mcg once or twice daily.\n\nTopical: apply once daily to affected area.",
+    "sideEffects": "Dry nose or throat, sore throat, skin thinning (topical).\n\nRare: nosebleeds, headache.",
+    "importantInfo": "Rinse mouth after inhaler use to prevent thrush.\n\nDo not use for longer than recommended without review.\n\nAvoid eyes when using topical form."
+  },
+  {
+    "name": "Montelukast",
+    "brand": "Singulair, Montelo-10, Lukotas, Montek, Airlukast.",
+    "description": "Montelukast is a leukotriene receptor antagonist used to prevent asthma symptoms and treat seasonal allergies. It works by blocking inflammation-causing chemicals.",
+    "dosage": "Adults: 10 mg once daily in the evening.\n\nChildren: 4–5 mg once daily depending on age.",
+    "sideEffects": "Headache, abdominal pain, tiredness.\n\nRare: mood changes, sleep disturbances.",
+    "importantInfo": "Take at the same time each day.\n\nNot a rescue medicine — do not use for sudden asthma attacks.\n\nDiscuss mood-related side effects with your doctor."
+  },
+  {
+    "name": "Morphine",
+    "brand": "MST Continus, Sevredol, Oramorph, Zomorph, MXL.",
+    "description": "Morphine is a strong opioid used to treat moderate to severe pain. It works by blocking pain signals in the brain and spinal cord.",
+    "dosage": "Immediate-release: 5–20 mg every 4 hours as needed.\n\nModified-release: 10–60 mg twice daily based on pain severity.",
+    "sideEffects": "Constipation, drowsiness, nausea, itching.\n\nSerious: respiratory depression, dependence, confusion.",
+    "importantInfo": "Avoid alcohol and driving.\n\nUse laxatives to prevent constipation.\n\nTaper slowly if discontinuing after long-term use."
+  },
+  {
+    "name": "Naproxen",
+    "brand": "Naprosyn, Aleve, Naprelan, Synflex, Feminax Ultra.",
+    "description": "Naproxen is a nonsteroidal anti-inflammatory drug (NSAID) used to relieve pain, inflammation, and stiffness in arthritis, period pain, and injury.",
+    "dosage": "Typical dose: 250–500 mg twice daily.\n\nMaximum daily dose: 1,000 mg.",
+    "sideEffects": "Stomach pain, heartburn, dizziness.\n\nLong-term: ulcers, kidney issues, cardiovascular risks.",
+    "importantInfo": "Take with food or milk to protect your stomach.\n\nAvoid combining with other NSAIDs.\n\nInform your doctor if you have stomach or heart conditions."
+  },
+  {
+    "name": "Nefopam",
+    "brand": "Acupan, Nefopam Hydrochloride, Fenazox, Neflam.",
+    "description": "Nefopam is a non-opioid painkiller used for moderate pain. It works by blocking pain signals in the brain but is not anti-inflammatory.",
+    "dosage": "Oral: 30–90 mg three times daily.\n\nIV (hospital use): up to 20 mg every 4–6 hours.",
+    "sideEffects": "Nausea, dizziness, dry mouth, sweating.\n\nMay cause drowsiness or palpitations.",
+    "importantInfo": "Avoid alcohol and operating machinery.\n\nDo not exceed recommended dose.\n\nNot typically used long-term."
+  },
+  {
+    "name": "Nicorandil",
+    "brand": "Ikorel, Angedil, Corodil, Nicoran, Nicorandil Accord.",
+    "description": "Nicorandil is used to prevent chest pain (angina) by widening blood vessels and improving blood flow to the heart.",
+    "dosage": "Initial dose: 5–10 mg twice daily.\n\nMaintenance: 10–20 mg twice daily depending on tolerance.",
+    "sideEffects": "Headache, flushing, dizziness.\n\nRare: mouth ulcers, low blood pressure.",
+    "importantInfo": "Do not stop suddenly without medical advice.\n\nAvoid use with PDE5 inhibitors (e.g., sildenafil).\n\nReport persistent ulcers or bleeding."
+  },
+  {
+    "name": "Nifedipine",
+    "brand": "Adalat, Nifediac, Procardia, Tenif, Coracten.",
+    "description": "Nifedipine is a calcium channel blocker used to treat high blood pressure and angina. It relaxes and widens blood vessels.",
+    "dosage": "Typical modified-release: 30–60 mg once daily.\n\nDo not use immediate-release for long-term blood pressure control.",
+    "sideEffects": "Swollen ankles, headache, flushing, palpitations.\n\nRare: gum overgrowth.",
+    "importantInfo": "Do not chew or crush modified-release tablets.\n\nAvoid grapefruit juice.\n\nMonitor blood pressure regularly."
+  },
+  {
+    "name": "Nitrofurantoin",
+    "brand": "Macrobid, Macrodantin, Furadantin, Nifuran, Uvamin.",
+    "description": "Nitrofurantoin is an antibiotic used to treat and prevent urinary tract infections. It works best in acidic urine environments.",
+    "dosage": "Treatment: 100 mg twice daily for 3–7 days.\n\nPrevention: 50–100 mg once daily at night.",
+    "sideEffects": "Nausea, headache, urine discoloration (brown).\n\nRare: lung or liver problems with long-term use.",
+    "importantInfo": "Take with food or milk.\n\nStay hydrated and complete the course.\n\nDo not use if you have kidney problems (low eGFR)."
+  },
+  {
+    "name": "Nortriptyline",
+    "brand": "Pamelor, Allegron, Nortrilen, Sensoval, Norpress.",
+    "description": "Nortriptyline is a tricyclic antidepressant used to treat depression, nerve pain, and sometimes migraines or sleep disorders.",
+    "dosage": "Depression: 25–75 mg daily, typically at bedtime.\n\nNerve pain: lower doses (10–25 mg) initially.",
+    "sideEffects": "Drowsiness, dry mouth, constipation, weight gain.\n\nRare: heart rhythm issues, confusion in elderly.",
+    "importantInfo": "Do not stop suddenly.\n\nAvoid alcohol and sedatives.\n\nMay take 2–4 weeks to see full benefit."
+  },
+  {
+    "name": "Nystatin",
+    "brand": "Mycostatin, Nystan, Nilstat, Fungistatin, Nyaderm.",
+    "description": "Nystatin is an antifungal medication used to treat infections caused by Candida, such as oral thrush, skin infections, and diaper rash.",
+    "dosage": "Oral suspension: 100,000 units four times daily, swish and swallow.\n\nTopical: apply to affected area 2–3 times daily.",
+    "sideEffects": "Mild nausea, diarrhea (oral).\n\nTopical: skin irritation or rash.",
+    "importantInfo": "Complete the full course even if symptoms improve.\n\nShake oral suspension well before use.\n\nDo not use topical form on broken skin unless directed."
+  },
+  {
+    "name": "Oestrogen",
+    "brand": "Premarin, Elleste Solo, Progynova, Estradot, Evorel.",
+    "description": "Oestrogen is a hormone used in hormone replacement therapy (HRT) to treat menopausal symptoms and in contraception. It can be taken orally, topically, or as patches.",
+    "dosage": "Depends on formulation: oral (0.5–2 mg daily), patch (applied twice weekly), gel (daily).\n\nUsed continuously or cyclically.",
+    "sideEffects": "Breast tenderness, bloating, nausea, headache.\n\nIncreased risk of blood clots or stroke with long-term use.",
+    "importantInfo": "Use at the lowest effective dose for the shortest duration.\n\nReport unusual bleeding, breast lumps, or leg swelling.\n\nCombine with progesterone if uterus is intact (unless advised)."
+  },
+  {
+    "name": "Olanzapine",
+    "brand": "Zyprexa, Oliza, Lanzek, Olanex, Zolafren.",
+    "description": "Olanzapine is an atypical antipsychotic used to treat schizophrenia, bipolar disorder, and acute manic episodes.",
+    "dosage": "Starting dose: 5–10 mg once daily.\n\nMaintenance: 10–20 mg daily depending on response.",
+    "sideEffects": "Weight gain, drowsiness, increased appetite, dry mouth.\n\nRare: high blood sugar, cholesterol changes, movement disorders.",
+    "importantInfo": "Monitor weight, blood sugar, and lipids.\n\nAvoid alcohol.\n\nMay take several weeks for full effect."
+  },
+  {
+    "name": "Olmesartan",
+    "brand": "Benicar, Olmetec, Olmecip, Olmesar, Cardosal.",
+    "description": "Olmesartan is an angiotensin II receptor blocker (ARB) used to treat high blood pressure by relaxing blood vessels.",
+    "dosage": "Typical starting dose: 10–20 mg once daily.\n\nMaintenance: up to 40 mg daily.",
+    "sideEffects": "Dizziness, fatigue, back pain.\n\nRare: kidney issues, high potassium, severe diarrhea (sprue-like enteropathy).",
+    "importantInfo": "Monitor kidney function and potassium.\n\nAvoid potassium supplements or NSAIDs unless advised.\n\nTake at the same time daily."
+  },
+  {
+    "name": "Omeprazole",
+    "brand": "Losec, Prilosec, Omez, Zegerid, Omep.",
+    "description": "Omeprazole is a proton pump inhibitor (PPI) used to treat acid reflux, indigestion, stomach ulcers, and H. pylori infection. It reduces stomach acid production.",
+    "dosage": "Typical dose: 20–40 mg once daily.\n\nMay be taken twice daily for severe conditions or H. pylori treatment.",
+    "sideEffects": "Headache, abdominal pain, nausea, flatulence.\n\nLong-term: low magnesium, B12 deficiency, fracture risk.",
+    "importantInfo": "Take 30–60 minutes before meals.\n\nDo not crush or chew capsules.\n\nUse the lowest effective dose for the shortest duration."
+  },
+  {
+    "name": "Oxybutynin",
+    "brand": "Ditropan, Lyrinel, Oxytrol, Kentera, Cystrin.",
+    "description": "Oxybutynin is used to treat overactive bladder and urinary incontinence by relaxing bladder muscles to reduce urgency and frequency.",
+    "dosage": "Immediate-release: 2.5–5 mg two or three times daily.\n\nExtended-release: 5–10 mg once daily.\n\nPatches and topical gels also available.",
+    "sideEffects": "Dry mouth, constipation, blurred vision, drowsiness.\n\nRare: confusion, especially in elderly.",
+    "importantInfo": "Stay hydrated to manage dry mouth.\n\nAvoid overheating — may reduce ability to sweat.\n\nUse caution in glaucoma or older adults."
+  },
+  {
+    "name": "Oxycodone",
+    "brand": "OxyContin, Oxynorm, Endone, Roxicodone, Longtec.",
+    "description": "Oxycodone is a strong opioid painkiller used for moderate to severe pain. It alters pain perception in the brain and spinal cord.",
+    "dosage": "Immediate-release: 5–20 mg every 4–6 hours as needed.\n\nModified-release: 10–80 mg twice daily, adjusted individually.",
+    "sideEffects": "Constipation, nausea, drowsiness, dizziness.\n\nSerious: respiratory depression, dependence, low blood pressure.",
+    "importantInfo": "Avoid alcohol and sedatives.\n\nUse laxatives to prevent constipation.\n\nDo not crush or chew modified-release tablets."
+  },
+  {
+    "name": "Pantoprazole",
+    "brand": "Protonix, Somac, Pantodac, Panum, Pantorc.",
+    "description": "Pantoprazole is a proton pump inhibitor (PPI) used to treat acid reflux, GERD, ulcers, and Zollinger-Ellison syndrome by reducing stomach acid.",
+    "dosage": "20–40 mg once daily.\n\nMay be increased to 40 mg twice daily for severe conditions.",
+    "sideEffects": "Headache, diarrhea, nausea, abdominal pain.\n\nLong-term: magnesium or vitamin B12 deficiency.",
+    "importantInfo": "Take 30–60 minutes before meals.\n\nSwallow tablets whole with water.\n\nRegularly review need for long-term use."
   }
 ]

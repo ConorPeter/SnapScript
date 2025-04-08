@@ -159,17 +159,27 @@ export default function HomeScreen() {
           orderBy("createdAt", "desc")
         );
 
-        const unsubscribe = onSnapshot(medsQuery, (medsSnapshot) => {
-          const medsData = medsSnapshot.docs.map((doc) => {
-            const med = doc.data();
-            return {
-              id: doc.id,
-              ...med,
-              color: getColorFromName(med.name || "default"),
-            };
-          });
-          setMedications(medsData);
-        });
+        const unsubscribe = onSnapshot(
+          medsQuery,
+          (medsSnapshot) => {
+            const medsData = medsSnapshot.docs.map((doc) => {
+              const med = doc.data();
+              return {
+                id: doc.id,
+                ...med,
+                color: getColorFromName(med.name || "default"),
+              };
+            });
+            setMedications(medsData);
+          },
+          (error) => {
+            if (error.code === "permission-denied") {
+              console.warn("Permission denied: Unable to fetch medications.");
+            } else {
+              console.error("Error in snapshot listener:", error);
+            }
+          }
+        );
 
         return unsubscribe;
       } catch (error) {
