@@ -75,7 +75,7 @@ export default function ManualEntryScreen() {
           payload,
           {
             headers: {
-              Authorization: `Bearer {API_Key}`,
+              Authorization: `Bearer ${OPENAI_API_KEY}`,
               "Content-Type": "application/json",
             },
           }
@@ -150,33 +150,40 @@ export default function ManualEntryScreen() {
       console.log("Extracted text from image:\n", fullText);
 
       console.log("Sending extracted text to OpenAI...");
-      const aiRes = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-4o-mini",
-          messages: [
-            {
-              role: "system",
-              content: `You are a medical assistant extracting structured prescription details. Return only the following in this format:
-      
-      - Medication Name:
-      - Dosage:
-      - Dosage Form:
-      - Instructions:`,
-            },
-            {
-              role: "user",
-              content: `Text:\n${fullText}`,
-            },
-          ],
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${OPENAI_API_KEY}`,
-            "Content-Type": "application/json",
+
+      const aiRes = await fetchAIWithRetry({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content: `You are a medical assistant extracting structured prescription details from scanned text.
+          
+          Return the most relevant values for each field.
+          Use ONLY the options provided for "Dosage Form" and "Frequency".
+          If not found, return "null".
+          
+          Do NOT include frequency-related phrases in the "Instructions" field if a frequency is detected and returned separately.
+          
+          Valid Dosage Form options:
+          ${dosageFormOptions.join(", ")}
+          
+          Valid Frequency options:
+          ${frequencyOptions.join(", ")}
+          
+          Respond using the following format:
+          
+          - Medication Name:
+          - Dosage:
+          - Dosage Form: (from list or "null")
+          - Frequency: (from list or "null")
+          - Instructions:`,
           },
-        }
-      );
+          {
+            role: "user",
+            content: `Text:\n${fullText}`,
+          },
+        ],
+      });
 
       const responseText = aiRes.data.choices[0].message.content;
       console.log("OpenAI structured response:\n", responseText);
@@ -194,8 +201,21 @@ export default function ManualEntryScreen() {
 
       setMedicationName(parsedData["Medication Name"] || "");
       setDosageAmount(parsedData["Dosage"] || "");
-      setDosageForm(parsedData["Dosage Form"] || "");
       setInstructions(parsedData["Instructions"] || "");
+
+      const pickedForm = parsedData["Dosage Form"];
+      const pickedFreq = parsedData["Frequency"];
+
+      setDosageForm(
+        dosageFormOptions.includes(pickedForm) && pickedForm !== "null"
+          ? pickedForm
+          : ""
+      );
+      setFrequency(
+        frequencyOptions.includes(pickedFreq) && pickedFreq !== "null"
+          ? pickedFreq
+          : ""
+      );
     } catch (error) {
       console.error("Error during OCR or AI analysis:", error);
       Alert.alert("Scan Error", "Failed to process image text.");
