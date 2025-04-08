@@ -62,10 +62,21 @@ export default function ManualEntryScreen() {
     "Every 4 hours",
     "Every 8 hours",
     "Every 12 hours",
+    "Twice Daily",
     "Every second day",
     "Weekly",
     "As Needed",
   ];
+
+  const toTitleCase = (str) => {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) =>
+        word.length > 0 ? word[0].toUpperCase() + word.slice(1) : ""
+      )
+      .join(" ");
+  };
 
   const fetchAIWithRetry = async (payload, maxRetries = 3) => {
     for (let attempt = 0; attempt < maxRetries; attempt++) {
@@ -199,9 +210,9 @@ export default function ManualEntryScreen() {
 
       console.log("Parsed structured data:", parsedData);
 
-      setMedicationName(parsedData["Medication Name"] || "");
-      setDosageAmount(parsedData["Dosage"] || "");
-      setInstructions(parsedData["Instructions"] || "");
+      setMedicationName(toTitleCase(parsedData["Medication Name"] || ""));
+      setDosageAmount(toTitleCase(parsedData["Dosage"] || ""));
+      setInstructions(toTitleCase(parsedData["Instructions"] || ""));
 
       const pickedForm = parsedData["Dosage Form"];
       const pickedFreq = parsedData["Frequency"];

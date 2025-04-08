@@ -268,9 +268,7 @@ export default function HomeScreen() {
 
                         {item.instructions && (
                           <Text style={styles.medInstructions}>
-                            {item.instructions.length > 40
-                              ? `${item.instructions.slice(0, 40)}...`
-                              : item.instructions}
+                            {item.instructions}
                           </Text>
                         )}
                       </View>
