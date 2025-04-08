@@ -47,6 +47,7 @@ export default function ManualEntryScreen() {
 
   const GOOGLE_CLOUD_VISION_API_KEY = "";
   const OPENAI_API_KEY = "";
+  const COHERE_API_KEY = "";
 
   const dosageFormOptions = [
     "Tablet",
@@ -55,6 +56,7 @@ export default function ManualEntryScreen() {
     "Injection",
     "Drops",
     "Cream",
+    "Gel",
     "Other",
   ];
   const frequencyOptions = [
@@ -91,18 +93,53 @@ export default function ManualEntryScreen() {
             },
           }
         );
-        return response;
+        return { source: "openai", data: response.data };
       } catch (error) {
         if (error.response?.status === 429 && attempt < maxRetries - 1) {
           const delay = 2 ** attempt * 1000;
-          console.warn(`Rate limited. Retrying in ${delay / 1000}s...`);
+          console.warn(`OpenAI rate limited. Retrying in ${delay / 1000}s...`);
           await new Promise((res) => setTimeout(res, delay));
-        } else {
-          throw error;
+        } else if (attempt === maxRetries - 1) {
+          console.warn(
+            "OpenAI failed after retries. Falling back to Cohere..."
+          );
+          return await fallbackToCohere(payload.messages);
         }
       }
     }
-    throw new Error("Exceeded retry limit");
+  };
+
+  const fallbackToCohere = async (messages) => {
+    try {
+      const prompt = messages
+        .map((m) => `${m.role.toUpperCase()}: ${m.content}`)
+        .join("\n\n");
+
+      const cohereRes = await axios.post(
+        "https://api.cohere.ai/v1/chat",
+        {
+          model: "command-r-plus",
+          message: prompt,
+          temperature: 0.3,
+          max_tokens: 500,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${COHERE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const content = cohereRes.data.text || cohereRes.data.reply;
+      return {
+        source: "cohere",
+        data: { choices: [{ message: { content } }] },
+      };
+    } catch (cohereErr) {
+      console.error("Cohere fallback also failed:", cohereErr);
+      throw new Error("All AI parsing failed.");
+    }
   };
 
   const onDateChange = (event, selectedDate) => {
@@ -185,8 +222,8 @@ export default function ManualEntryScreen() {
           
           - Medication Name:
           - Dosage:
-          - Dosage Form: (from list or "null")
-          - Frequency: (from list or "null")
+          - Dosage Form: (from list or "")
+          - Frequency: (from list or "")
           - Instructions:`,
           },
           {
@@ -197,7 +234,7 @@ export default function ManualEntryScreen() {
       });
 
       const responseText = aiRes.data.choices[0].message.content;
-      console.log("OpenAI structured response:\n", responseText);
+      console.log("LLM structured response:\n", responseText);
 
       const parsedData = {};
       responseText.split("\n").forEach((line) => {
