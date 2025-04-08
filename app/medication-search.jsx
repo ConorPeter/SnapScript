@@ -34,6 +34,21 @@ export default function MedSearch() {
         med.brand.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    results.sort((a, b) => {
+      const query = searchQuery.toLowerCase();
+      const aNameStartsWith = a.name.toLowerCase().startsWith(query);
+      const bNameStartsWith = b.name.toLowerCase().startsWith(query);
+      const aBrandStartsWith = a.brand.toLowerCase().startsWith(query);
+      const bBrandStartsWith = b.brand.toLowerCase().startsWith(query);
+
+      if (aNameStartsWith && !bNameStartsWith) return -1;
+      if (!aNameStartsWith && bNameStartsWith) return 1;
+      if (aBrandStartsWith && !bBrandStartsWith) return -1;
+      if (!aBrandStartsWith && bBrandStartsWith) return 1;
+
+      return 0;
+    });
+
     setFilteredMeds(results);
   }, [searchQuery]);
 

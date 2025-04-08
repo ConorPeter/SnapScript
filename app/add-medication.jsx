@@ -165,7 +165,6 @@ export default function ManualEntryScreen() {
 
       console.log("Parsed structured data:", parsedData);
 
-      // Set the extracted fields
       setMedicationName(parsedData["Medication Name"] || "");
       setDosageAmount(parsedData["Dosage"] || "");
       setDosageForm(parsedData["Dosage Form"] || "");
@@ -188,7 +187,7 @@ export default function ManualEntryScreen() {
   const handleRefillReminderToggle = (value) => {
     setRefillReminder(value);
     if (value) {
-      setShowDatePicker(true); // Ensure the date picker remains visible
+      setShowDatePicker(true);
     } else {
       setShowDatePicker(false);
       setHasShownDatePicker(false);
@@ -198,7 +197,7 @@ export default function ManualEntryScreen() {
   const handleDailyReminderToggle = (value) => {
     setDailyReminder(value);
     if (value) {
-      setShowTimePicker(true); // Ensure the time picker remains visible
+      setShowTimePicker(true);
     } else {
       setShowTimePicker(false);
       setHasShownTimePicker(false);

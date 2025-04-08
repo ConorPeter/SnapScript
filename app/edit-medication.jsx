@@ -142,7 +142,6 @@ export default function ManualEntryScreen() {
       const medRef = doc(db, "users", user.uid, "medications", id);
       await updateDoc(medRef, updatedData);
 
-      // Schedule reminders after updating
       scheduleReminder({ ...updatedData, id });
 
       Alert.alert("Success", "Medication updated.");
@@ -170,7 +169,7 @@ export default function ManualEntryScreen() {
   const handleRefillReminderToggle = (value) => {
     setRefillReminder(value);
     if (value) {
-      setShowDatePicker(true); // Ensure the date picker remains visible
+      setShowDatePicker(true);
     } else {
       setShowDatePicker(false);
       setHasShownDatePicker(false);
@@ -180,7 +179,7 @@ export default function ManualEntryScreen() {
   const handleDailyReminderToggle = (value) => {
     setDailyReminder(value);
     if (value) {
-      setShowTimePicker(true); // Ensure the time picker remains visible
+      setShowTimePicker(true);
     } else {
       setShowTimePicker(false);
       setHasShownTimePicker(false);
