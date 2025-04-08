@@ -67,6 +67,33 @@ export default function ManualEntryScreen() {
     "As Needed",
   ];
 
+  const fetchAIWithRetry = async (payload, maxRetries = 3) => {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        const response = await axios.post(
+          "https://api.openai.com/v1/chat/completions",
+          payload,
+          {
+            headers: {
+              Authorization: `Bearer {API_Key}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        return response;
+      } catch (error) {
+        if (error.response?.status === 429 && attempt < maxRetries - 1) {
+          const delay = 2 ** attempt * 1000;
+          console.warn(`Rate limited. Retrying in ${delay / 1000}s...`);
+          await new Promise((res) => setTimeout(res, delay));
+        } else {
+          throw error;
+        }
+      }
+    }
+    throw new Error("Exceeded retry limit");
+  };
+
   const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || refillDate;
     setShowDatePicker(false);
@@ -126,16 +153,16 @@ export default function ManualEntryScreen() {
       const aiRes = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-4o",
+          model: "gpt-4o-mini",
           messages: [
             {
               role: "system",
               content: `You are a medical assistant extracting structured prescription details. Return only the following in this format:
-  
-  - Medication Name:
-  - Dosage:
-  - Dosage Form:
-  - Instructions:`,
+      
+      - Medication Name:
+      - Dosage:
+      - Dosage Form:
+      - Instructions:`,
             },
             {
               role: "user",
