@@ -54,7 +54,7 @@ SnapScript is a mobile app built with React Native and Expo that makes managing 
 
 **1. Clone the repo**
 
-- git clone https://github.com/Conor1406/SnapScript.git
+- git clone https://github.com/ConorPeter/SnapScript.git
 - cd SnapScript
 
 **2. Install Dependancies**
