@@ -2,7 +2,7 @@
 
 ## Medication management mobile app with AI-powered label scanning
 
-SnapScript is an Expo router React Native medication reminder app designed to simplify how users manage their daily medications. Whether by scanning a label or entering details manually, SnapScript helps users stay on top of their health with smart reminders and accessible info.
+SnapScript is a mobile app built with React Native and Expo that makes managing medications simple and reliable. Its key feature is the ability to scan a prescription label with your phone’s camera, automatically extracting dosage, schedule, and refill details using OCR and AI. Users can also add medications manually, receive smart daily and refill reminders, and search a built-in database for medication information.
 
 ---
 
